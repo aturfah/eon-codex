@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "10eb1663204bcd728709caaf71745d51",
+    "revision": "2e781189c5af1bc04257d4af61f4b166",
     "url": "/eox-codex/index.html"
   },
   {

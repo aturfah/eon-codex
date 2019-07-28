@@ -3,11 +3,13 @@
 }
 
 .FilterPanel {
-  background-color: #9bdfff;
-  color: #034079
+  color: #c6ffec;
+  background-color: #18549b;
+  height: 15%;
 }
 
 .Compendium {
-  color: #c6ffec;
-  background-color: #18549b;
+  background-color: #9bdfff;
+  color: #034079;
+  flex: 1 1 auto;
 }

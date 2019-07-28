@@ -1,14 +1,13 @@
 import React from 'react';
 import './App.css';
+import FilterPanel from './FilterPanel';
+import Compendium from './Compendium';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Hello World!
-        </p>
-      </header>
+      <FilterPanel></FilterPanel>
+      <Compendium></Compendium>
     </div>
   );
 }

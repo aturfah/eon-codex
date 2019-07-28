@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/eox-codex/static/css/main.2cce8147.chunk.css",
+    "main.js": "/eox-codex/static/js/main.36c6392c.chunk.js",
+    "main.js.map": "/eox-codex/static/js/main.36c6392c.chunk.js.map",
+    "runtime~main.js": "/eox-codex/static/js/runtime~main.905525f0.js",
+    "runtime~main.js.map": "/eox-codex/static/js/runtime~main.905525f0.js.map",
+    "static/js/2.b41502e9.chunk.js": "/eox-codex/static/js/2.b41502e9.chunk.js",
+    "static/js/2.b41502e9.chunk.js.map": "/eox-codex/static/js/2.b41502e9.chunk.js.map",
+    "index.html": "/eox-codex/index.html",
+    "precache-manifest.857e4645c1237875bb8a2fab1b95d2e8.js": "/eox-codex/precache-manifest.857e4645c1237875bb8a2fab1b95d2e8.js",
+    "service-worker.js": "/eox-codex/service-worker.js",
+    "static/css/main.2cce8147.chunk.css.map": "/eox-codex/static/css/main.2cce8147.chunk.css.map",
+    "static/media/logo.svg": "/eox-codex/static/media/logo.5d5d9eef.svg"
+  }
+}

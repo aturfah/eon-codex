@@ -1,15 +1,3 @@
 .App {
   text-align: center;
 }
-
-.FilterPanel {
-  color: #c6ffec;
-  background-color: #18549b;
-  height: 15%;
-}
-
-.Compendium {
-  background-color: #9bdfff;
-  color: #034079;
-  flex: 1 1 auto;
-}

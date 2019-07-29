@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './App.css';
+import './FilterPanel.css';
 
 /**
  * Dropdown element for class selection

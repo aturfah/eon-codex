@@ -17,10 +17,13 @@ class App extends Component {
     };
   }
 
-  updateFilters(newFilters) {
+  updateFilters(key, filterValue) {
+    console.log("Updating filter", key, filterValue)
     const newState = this.state;
-    newState.filters = newFilters;
+    newState.filters[key] = filterValue;
     this.setState(newState);
+    console.log("NEW STATE -->")
+    console.log(this.state)
   }
 
   render() {

@@ -13,6 +13,34 @@ import ToggleButton from 'react-bootstrap/ToggleButton';
  */
 class FilterPanel extends Component {
   /**
+   * Initializes App
+   * @param {Object} props Properties of object
+   */
+  constructor(props) {
+    super(props);
+    this.itemFlag = true;
+    this._toggleItemFlag = this._toggleItemFlag.bind(this);
+    console.log("FILTER PROPS -->");
+    console.log(props);
+  }
+
+  _toggleItemFlag(itemFlag) {
+    console.log("HERE!!!")
+    this.itemFlag = itemFlag;
+    this.props.updateFilters('itemFlag', itemFlag);
+  }
+
+  toggleItemFlagOn() {
+    console.log("Flag On")
+    this._toggleItemFlag(true);
+  }
+
+  toggleItemFlagOff() {
+    console.log("Flag Off")
+    this._toggleItemFlag(false);
+  }
+
+  /**
    * Renders this React class
    * @return {div} Rendered dropdown button
    */
@@ -23,9 +51,9 @@ class FilterPanel extends Component {
           <Col xs="4">
             <p>I am FilterPanel. Fear me.</p>
             <ButtonToolbar className="CenterToolbar">
-              <ToggleButtonGroup type="radio" name="options" defaultValue={1}>
-                <ToggleButton value={1}>Items</ToggleButton>
-                <ToggleButton value={2}>Monsters</ToggleButton>
+              <ToggleButtonGroup type="radio" name="ItemMonstOpts" defaultValue={1}>
+                <ToggleButton onClick={this.toggleItemFlagOn.bind(this)} value={1} active={this.itemFlag===true}>Items</ToggleButton>
+                <ToggleButton onClick={this.toggleItemFlagOff.bind(this)} value={2} active={this.itemFlag===false}>Monsters</ToggleButton>
               </ToggleButtonGroup>
             </ButtonToolbar>
           </Col>

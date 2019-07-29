@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import './FilterPanel.css';
 
+import Container from 'react-bootstrap/Container'
+
+
 /**
  * Dropdown element for class selection
  */
@@ -11,9 +14,9 @@ class FilterPanel extends Component {
    */
   render() {
     return (
-      <div className="FilterPanel">
+      <Container fluid={true} className="FilterPanel">
         I am FilterPanel. Fear me.
-      </div>
+      </Container>
     );
   }
 }

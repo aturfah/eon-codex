@@ -48,9 +48,11 @@ class FilterPanel extends Component {
 
     let itemButtonVariant = 'success';
     let monsterButtonVariant = 'secondary';
+    let itemFiltersVisible = true;
     if (this.itemFlag===false) {
       itemButtonVariant = 'secondary';
       monsterButtonVariant = 'success';
+      itemFiltersVisible = false;
     }
 
     return (
@@ -77,8 +79,8 @@ class FilterPanel extends Component {
               </ToggleButtonGroup>
             </ButtonToolbar>
           </Col>
-          <Col xs="12" md="4">I am FilterPanel. Hate me.</Col>
-          <Col xs="12" md="4">I am FilterPanel. Love me.</Col>
+          <Col xs="12" md="8" hidden={!itemFiltersVisible}>I am Items FilterPanel. Hate me.</Col>
+          <Col xs="12" md="8" hidden={itemFiltersVisible}>I am Monsters FilterPanel. Love me.</Col>
         </Row>
       </Container>
     );

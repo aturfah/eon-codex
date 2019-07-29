@@ -4,3 +4,7 @@
     height: 15%;
     min-height: 100px;
   }
+
+.CenterToolbar {
+  justify-content: center;
+}

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './Compendium.css';
+import './data'
 
 /**
  * Dropdown element for class selection

@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import './App.css';
 import FilterPanel from './FilterPanel/FilterPanel';
 import Compendium from './Compendium/Compendium';
-
+import itemData from './ItemData';
+import monsterData from './MonsterData';
 
 class App extends Component {
   /**
@@ -26,7 +27,11 @@ class App extends Component {
     return (
       <div className="App">
         <FilterPanel updateFilters={this.updateFilters.bind(this)}></FilterPanel>
-        <Compendium filters={this.state.filters}></Compendium>
+        <Compendium
+          filters={this.state.filters}
+          itemData={itemData}
+          monsterData={monsterData}>
+        </Compendium>
       </div>
     );  
   }

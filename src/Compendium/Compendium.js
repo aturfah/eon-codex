@@ -13,6 +13,19 @@ class Compendium extends Component {
     super(props);
   }
 
+  filterResults() {
+    let filters = this.props.filters;
+    let dataset = null;
+    console.log("Item Flag", filters.itemFlag)
+    if (filters.itemFlag) {
+      dataset = this.props.itemData;
+    } else {
+      dataset = this.props.monsterData;
+    }
+    console.log(dataset);
+    return 8
+  }
+
   /**
    * Renders this React class
    * @return {div} Rendered dropdown button
@@ -20,6 +33,9 @@ class Compendium extends Component {
   render() {
     console.log("COMPENDIUM PROPS -->")
     console.log(this.props);
+
+    const dataset = this.filterResults()
+
 
     return (
       <div className="Compendium">

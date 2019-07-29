@@ -11,8 +11,6 @@ class Compendium extends Component {
    */
   constructor(props) {
     super(props);
-    console.log("COMPENDIUM PROPS -->")
-    console.log(props);
   }
 
   /**
@@ -20,6 +18,9 @@ class Compendium extends Component {
    * @return {div} Rendered dropdown button
    */
   render() {
+    console.log("COMPENDIUM PROPS -->")
+    console.log(this.props);
+
     return (
       <div className="Compendium">
         I am Compendium. Fear me.

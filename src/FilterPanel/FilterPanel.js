@@ -25,7 +25,7 @@ class FilterPanel extends Component {
 
   _toggleItemFlag(itemFlag) {
     this.itemFlag = itemFlag;
-    this.props.updateFilters('itemFlag', itemFlag);
+    this.props.updateFilters('itemFlag', itemFlag, true);
   }
 
   toggleItemFlagOn() {

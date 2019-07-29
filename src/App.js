@@ -12,13 +12,24 @@ class App extends Component {
    */
   constructor(props) {
     super(props);
-    this.state = {
+    this.state = this.defaultState();
+  }
+
+  defaultState() {
+    return {
       filters: {}
     };
   }
 
-  updateFilters(key, filterValue) {
-    const newState = this.state;
+  updateFilters(key, filterValue, clearFlag) {
+    let newState = null;
+    if (clearFlag === true) {
+      newState = this.defaultState()
+    }
+    else {
+      newState = this.state;
+    }
+
     newState.filters[key] = filterValue;
     this.setState(newState);
   }
@@ -26,7 +37,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <FilterPanel updateFilters={this.updateFilters.bind(this)}></FilterPanel>
+        <FilterPanel updateFilters={this.updateFilters.bind(this)}>
+        </FilterPanel>
         <Compendium
           filters={this.state.filters}
           itemData={itemData}

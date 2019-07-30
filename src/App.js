@@ -45,6 +45,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = defaultState();
+    this.locations = getLocations();
   }
 
   updateFilters(key, filterValue, clearFlag) {
@@ -61,12 +62,11 @@ class App extends Component {
   }
 
   render() {
-    const locations = getLocations();
     return (
       <div className="App">
         <FilterPanel
           updateFilters={this.updateFilters.bind(this)}
-          locations={locations}>
+          locations={this.locations}>
         </FilterPanel>
         <Compendium
           filters={this.state.filters}

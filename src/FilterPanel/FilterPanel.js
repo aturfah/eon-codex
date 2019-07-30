@@ -7,6 +7,8 @@ import Row from 'react-bootstrap/Row';
 import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
 import ToggleButton from 'react-bootstrap/ToggleButton';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import Dropdown from 'react-bootstrap/Dropdown';
 
 /**
  * Dropdown element for class selection
@@ -19,6 +21,7 @@ class FilterPanel extends Component {
   constructor(props) {
     super(props);
     this.itemFlag = true;
+    this.activeLocation = this.props.locations[0];
     this._toggleItemFlag = this._toggleItemFlag.bind(this);
     this.toggleItemFlagOn()
   }
@@ -38,6 +41,22 @@ class FilterPanel extends Component {
     this._toggleItemFlag(false);
   }
 
+  buildLocationDropdown() {
+    console.log("HI!!!")
+    const buttonLists = [];
+    this.props.locations.forEach(function (item, index) {
+      buttonLists.push(<Dropdown.Item href="#/action-1">{item}</Dropdown.Item>)
+    });
+
+    return <DropdownButton id="location-dropdown-select" title={this.activeLocation}>
+      {buttonLists}
+    </DropdownButton>
+  }
+
+  locationDropdownSelect() {
+    const doot = 8;
+  }
+
   /**
    * Renders this React class
    * @return {div} Rendered dropdown button
@@ -46,6 +65,7 @@ class FilterPanel extends Component {
     console.log("FILTER PROPS -->");
     console.log(this.props);
 
+    // Set button properties properly
     let itemButtonVariant = 'success';
     let monsterButtonVariant = 'secondary';
     let itemFiltersVisible = true;
@@ -54,6 +74,9 @@ class FilterPanel extends Component {
       monsterButtonVariant = 'success';
       itemFiltersVisible = false;
     }
+
+    // Build dropdown for Locations
+    const locationDropdown = this.buildLocationDropdown();
 
     return (
       <Container fluid={true} className="FilterPanel">
@@ -78,6 +101,7 @@ class FilterPanel extends Component {
                 </ToggleButton>
               </ToggleButtonGroup>
             </ButtonToolbar>
+            {locationDropdown}
           </Col>
           <Col xs="12" md="8" hidden={!itemFiltersVisible}>I am Items FilterPanel. Hate me.</Col>
           <Col xs="12" md="8" hidden={itemFiltersVisible}>I am Monsters FilterPanel. Love me.</Col>

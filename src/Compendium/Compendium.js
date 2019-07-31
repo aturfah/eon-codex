@@ -40,7 +40,7 @@ class Compendium extends Component {
     }
 
     // Filter Items based on Monster Source
-    if (filters.monsterSourceName && filters.monsterSourceName !== undefined) {
+    if (filters.itemFlag && filters.monsterSourceName && filters.monsterSourceName !== undefined) {
         dataset = dataset.filter(function (datum) {
             if (datum.monster_source != null) {
                 return datum.monster_source.toLowerCase().includes(filters.monsterSourceName);
@@ -48,6 +48,33 @@ class Compendium extends Component {
             return false;
         });
     }
+
+    // Filter Items based on gathering flags
+    if (filters.itemFlag && (filters.chopFlag || filters.mineFlag || filters.takeFlag)) {
+        const datasetChop = dataset.filter(function (datum) {
+            return filters.chopFlag && datum.chop_flag
+        });
+
+        const datasetTake = dataset.filter(function (datum) {
+            return filters.takeFlag && datum.take_flag
+        });
+
+        const datasetMine = dataset.filter(function (datum) {
+            return filters.mineFlag && datum.mine_flag
+        });
+
+        const newDataset = [];
+        dataset.forEach(function(value) {
+            if (datasetChop.includes(value)) {
+                newDataset.push(value)
+            } else if (datasetTake.includes(value)) {
+                newDataset.push(value)
+            } else if (datasetMine.includes(value)) {
+                newDataset.push(value)
+            }
+        });
+        dataset = newDataset;
+    } 
 
     // Filter Monsters based on Monster Type
     if (!filters.itemFlag && filters.monsterType !== undefined) {

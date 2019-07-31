@@ -23,6 +23,7 @@ class FilterPanel extends Component {
     this.itemFlag = true;
     this.activeLocation = this.props.locations[0];
     this._toggleItemFlag = this._toggleItemFlag.bind(this);
+    this.locationDropdownSelect = this.locationDropdownSelect.bind(this)
     this.toggleItemFlagOn()
   }
 
@@ -45,16 +46,25 @@ class FilterPanel extends Component {
     console.log("HI!!!")
     const buttonLists = [];
     this.props.locations.forEach(function (item, index) {
-      buttonLists.push(<Dropdown.Item href="#/action-1">{item}</Dropdown.Item>)
+      buttonLists.push(<Dropdown.Item eventKey={item}>{item}</Dropdown.Item>)
     });
 
-    return <DropdownButton id="location-dropdown-select" title={this.activeLocation}>
+    return <DropdownButton
+        id="location-dropdown-select"
+        ref="locationDropdownSelect"
+        title={this.activeLocation}
+        onSelect={this.locationDropdownSelect}
+        >
       {buttonLists}
     </DropdownButton>
   }
 
-  locationDropdownSelect() {
-    const doot = 8;
+  locationDropdownSelect(event) {
+    console.log("HI!!!!")
+    const dropdown = this.refs.locationDropdownSelect;
+    dropdown.title = event;
+    this.activeLocation = event;
+    this.props.updateFilters('location', event)
   }
 
   /**

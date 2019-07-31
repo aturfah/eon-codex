@@ -22,11 +22,11 @@ class FilterPanel extends Component {
     super(props);
     this.itemFlag = true;
     this.activeLocation = this.props.locations[0];
-    this.rareItemFlag = '(All)';
+    this.condItemFlag = '(All)';
 
     this._toggleItemFlag = this._toggleItemFlag.bind(this);
     this.locationDropdownSelect = this.locationDropdownSelect.bind(this);
-    this.rareItemDropdownSelect = this.rareItemDropdownSelect.bind(this);
+    this.condItemDropdownSelect = this.condItemDropdownSelect.bind(this);
     this.toggleItemFlagOn();
   }
 
@@ -74,7 +74,7 @@ class FilterPanel extends Component {
 
   }
 
-  buildRareItemDropdown() {
+  buildCondItemDropdown() {
     const buttonList = [];
     ['(All)', 'Yes', 'No'].forEach(function (val) {
         buttonList.push(<Dropdown.Item eventKey={val}>{val}</Dropdown.Item>)
@@ -83,22 +83,22 @@ class FilterPanel extends Component {
     return <DropdownButton
         size="sm"
         id="rare-item-dropdown-select"
-        ref="rareItemDropdownSelect"
-        title={this.rareItemFlag}
-        onSelect={this.rareItemDropdownSelect}
+        ref="condItemDropdownSelect"
+        title={this.condItemFlag}
+        onSelect={this.condItemDropdownSelect}
         >
       {buttonList}
     </DropdownButton>
   }
 
-  rareItemDropdownSelect(event) {
-    const dropdown = this.refs.rareItemDropdownSelect;
+  condItemDropdownSelect(event) {
+    const dropdown = this.refs.condItemDropdownSelect;
     dropdown.title = event;
-    this.rareItemFlag = event;
+    this.condItemFlag = event;
     if (event !== '(All)') {
-        this.props.updateFilters('rareItem', event);
+        this.props.updateFilters('condItem', event);
     } else {
-        this.props.updateFilters('rareItem', null);
+        this.props.updateFilters('condItem', null);
     }
   }
 
@@ -122,7 +122,7 @@ class FilterPanel extends Component {
 
     // Build dropdown for Locations
     const locationDropdown = this.buildLocationDropdown();
-    const rareItemDropdown = this.buildRareItemDropdown();
+    const condItemDropdown = this.buildCondItemDropdown();
 
     return (
       <Container fluid={true} className="FilterPanel">
@@ -149,7 +149,7 @@ class FilterPanel extends Component {
               </ToggleButtonGroup>
             </ButtonToolbar>
             {locationDropdown}
-            {rareItemDropdown}
+            {condItemDropdown}
           </Col>
           <Col xs="12" md="8" hidden={!itemFiltersVisible}>I am Items FilterPanel. Hate me.</Col>
           <Col xs="12" md="8" hidden={itemFiltersVisible}>I am Monsters FilterPanel. Love me.</Col>

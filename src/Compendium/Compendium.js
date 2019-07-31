@@ -39,6 +39,16 @@ class Compendium extends Component {
         });
     }
 
+    // Filter Items based on Monster Source
+    if (filters.monsterSourceName && filters.monsterSourceName !== undefined) {
+        dataset = dataset.filter(function (datum) {
+            if (datum.monster_source != null) {
+                return datum.monster_source.toLowerCase().includes(filters.monsterSourceName);
+            }
+            return false;
+        });
+    }
+
     // Filter Monsters based on Monster Type
     if (!filters.itemFlag && filters.monsterType !== undefined) {
         dataset = dataset.filter(function(datum) {

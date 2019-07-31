@@ -23,10 +23,7 @@ class FilterPanel extends Component {
   constructor(props) {
     super(props);
     this.itemFlag = true;
-    this.activeLocation = this.props.locations[0];
-    this.condItemFlag = '(All)';
-    this.monsterTypeFlag = '(All)';
-    this.nameFilter = '';
+    this.resetFlags();
 
     this._toggleItemFlag = this._toggleItemFlag.bind(this);
     this.nameFilterType = this.nameFilterType.bind(this);

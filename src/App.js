@@ -16,21 +16,25 @@ function getLocations() {
   const raw_output = new Set();
   const order = [];
 
-  monsterData.forEach(function (item, index) {
-    const lc_loc = item.location.toLowerCase();
-    raw_output.add(lc_loc);
-    if (!order.includes(lc_loc)) {
-        order.push(lc_loc);
-    }
+  [monsterData, itemData].forEach(function (rawData, index) {
+    rawData.forEach(function (item, index) {
+        let lc_loc = item.location.toLowerCase();
+        let loc_arr = []
+        if (!lc_loc.includes(' and ')) {
+            loc_arr.push(lc_loc)
+        } else {
+            loc_arr = lc_loc.split(' and ')
+        }
+    
+        loc_arr.forEach(function (loc_part) {
+            raw_output.add(loc_part);
+            if (!order.includes(loc_part)) {
+                order.push(loc_part);
+            }
+        });
+      });
   });
 
-  itemData.forEach(function (item, index) {
-    const lc_loc = item.location.toLowerCase();
-    raw_output.add(lc_loc);
-    if (!order.includes(lc_loc)) {
-        order.push(lc_loc);
-    }
-  });
 
   // Remove all composite locations
   const final_set = new Set();

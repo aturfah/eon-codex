@@ -31,6 +31,7 @@ class FilterPanel extends Component {
     this.locationDropdownSelect = this.locationDropdownSelect.bind(this);
     this.condItemDropdownSelect = this.condItemDropdownSelect.bind(this);
     this.monsterTypeDropdownSelect = this.monsterTypeDropdownSelect.bind(this);
+    this.gatherPointDropdownSelect = this.gatherPointDropdownSelect.bind(this);
     this.toggleItemFlagOn();
   }
 
@@ -40,6 +41,7 @@ class FilterPanel extends Component {
     this.monsterTypeFlag = '(All)';
     this.nameFilter = '';
     this.monsterNameFilter = '';
+    this.gatherPointFlag = '(N/A)'
   }
 
   _toggleItemFlag(itemFlag) {
@@ -214,6 +216,64 @@ class FilterPanel extends Component {
     }
   }
 
+  buildGatherPointDropdown() {
+    const buttonList = [];
+    let gatherPointFlag = this.gatherPointFlag;
+    ['(N/A)', '(All)', '(None)', 'Chop', 'Mine', 'Take'].forEach(function (val) {
+        buttonList.push(
+          <Dropdown.Item
+            eventKey={val}
+            disabled={val===gatherPointFlag} 
+            >
+           {val}
+        </Dropdown.Item>
+        )
+    });
+
+    return <DropdownButton
+        size="sm"
+        id="gather-point-dropdown-select"
+        ref="gatherPointDropdownSelect"
+        title={'Gather Point: ' + this.gatherPointFlag}
+        onSelect={this.gatherPointDropdownSelect}
+        className='paddedButton'
+        >
+      {buttonList}
+    </DropdownButton>
+  }
+
+  gatherPointDropdownSelect(event) {
+    const dropdown = this.refs.gatherPointDropdownSelect;
+    this.gatherPointFlag = event;
+    dropdown.title = event;
+
+    let chopFlag = false;
+    let mineFlag = false;
+    let takeFlag = false;
+    if (event !== '(N/A)') {
+        if (event === '(All)') {
+            chopFlag = true;
+            mineFlag = true;
+            takeFlag = true;
+        }
+        else if (event === 'Chop') {
+            chopFlag = true;
+        } else if (event === 'Mine') {
+            mineFlag = true;
+        } else if (event === 'Take') {
+            takeFlag = true;
+        }
+    } else {
+        chopFlag = null;
+        mineFlag = null;
+        takeFlag = null;
+    }
+
+    this.props.updateFilters('chopFlag', chopFlag);
+    this.props.updateFilters('mineFlag', mineFlag);
+    this.props.updateFilters('takeFlag', takeFlag);
+  }
+
   /**
    * Renders this React class
    * @return {div} Rendered dropdown button
@@ -236,6 +296,7 @@ class FilterPanel extends Component {
     const nameFilter = this.buildNameFilter();
     const locationDropdown = this.buildLocationDropdown();
     const condItemDropdown = this.buildCondItemDropdown();
+    const gatherPointDropdown = this.buildGatherPointDropdown();
     const monsterSourceTextField = this.buildMonsterSourceFilter()
     const monsterTypeDropdown = this.buildMonsterTypeDropdown();
 
@@ -269,6 +330,7 @@ class FilterPanel extends Component {
           <Col xs="12" md="8" hidden={!itemFiltersVisible}>
               I am Items FilterPanel. Hate me.
             {condItemDropdown}
+            {gatherPointDropdown}
             {monsterSourceTextField}
           </Col>
           <Col xs="12" md="8" hidden={itemFiltersVisible}>

@@ -82,7 +82,7 @@ class App extends Component {
     let newState = null;
     if (clearFlag === true) { // Preserve the old ones
       newState = defaultState()
-      newState.filters.location = this.state.filters.location;
+      //newState.filters.location = this.state.filters.location;
     }
     else {
       newState = this.state;

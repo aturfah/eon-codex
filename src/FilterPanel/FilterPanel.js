@@ -26,6 +26,7 @@ class FilterPanel extends Component {
     this.activeLocation = this.props.locations[0];
     this.condItemFlag = '(All)';
     this.monsterTypeFlag = '(All)';
+    this.nameFilter = '';
 
     this._toggleItemFlag = this._toggleItemFlag.bind(this);
     this.nameFilterType = this.nameFilterType.bind(this);
@@ -39,6 +40,7 @@ class FilterPanel extends Component {
     this.activeLocation = this.props.locations[0];
     this.condItemFlag = '(All)';
     this.monsterTypeFlag = '(All)';
+    this.nameFilter = '';
   }
 
   _toggleItemFlag(itemFlag) {
@@ -174,6 +176,7 @@ class FilterPanel extends Component {
         <FormControl
         ref="nameFilterText"
         placeholder="Name"
+        value={this.nameFilter}
         aria-label="Username"
         aria-describedby="basic-addon1"
         onChange={this.nameFilterType}
@@ -183,6 +186,7 @@ class FilterPanel extends Component {
 
   nameFilterType() {
     const textbox = this.refs.nameFilterText;
+    this.nameFilter = textbox.value;
     if (textbox.value) {
         this.props.updateFilters('name', textbox.value);
     } else {

@@ -174,9 +174,9 @@ class FilterPanel extends Component {
     return (<InputGroup className="mb-3">
         <FormControl
         ref="nameFilterText"
-        placeholder="Name"
+        placeholder="Item/Monster Name"
         value={this.nameFilter}
-        aria-label="Name"
+        aria-label="Item/Monster Name"
         onChange={this.nameFilterType}
         />
     </InputGroup>)

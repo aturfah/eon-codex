@@ -24,6 +24,14 @@ class Compendium extends Component {
         });
     }
 
+    // Filter Items based on Rare item flag
+    if (filters.itemFlag && filters.condItem !== undefined) {
+        let condItemFlag = (filters.condItem === 'Yes');
+        dataset = dataset.filter(function (datum) {
+            return datum.conditional === condItemFlag;
+        });
+    }
+
     // TODO: Do rest of stuff here
 
     console.log("AFTER FILTERS", dataset.length)

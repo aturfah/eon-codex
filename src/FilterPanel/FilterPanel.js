@@ -305,7 +305,7 @@ class FilterPanel extends Component {
         <Row>
           <Col xs="12" md="4">
             <p>I am FilterPanel. Fear me.</p>
-            <ButtonToolbar className="CenterToolbar">
+            <ButtonToolbar className="CenterToolbar paddedButton" >
               <ToggleButtonGroup type="radio" size="sm" name="ItemMonstOpts" defaultValue={1}>
                 <ToggleButton
                   onClick={this.toggleItemFlagOn.bind(this)}

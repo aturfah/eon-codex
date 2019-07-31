@@ -46,6 +46,7 @@ function getLocations() {
       console.log(value, -1 * (order.indexOf(value) + order.length))
       return -1 * (order.indexOf(value) + order.length)
   });
+  output.unshift('(All)') // Empty first element
   return output;
 }
 
@@ -63,14 +64,22 @@ class App extends Component {
 
   updateFilters(key, filterValue, clearFlag) {
     let newState = null;
-    if (clearFlag === true) {
+    if (clearFlag === true) { // Preserve the old ones
       newState = defaultState()
+      newState.filters.location = this.state.filters.location;
     }
     else {
       newState = this.state;
     }
 
-    newState.filters[key] = filterValue;
+    // Add ability to delete from filters
+    if (filterValue === undefined || filterValue === null) {
+        delete newState.filters[key];
+    }
+    else {
+        newState.filters[key] = filterValue;
+    }
+
     this.setState(newState);
   }
 

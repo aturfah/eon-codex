@@ -23,8 +23,8 @@ class FilterPanel extends Component {
     this.itemFlag = true;
     this.activeLocation = this.props.locations[0];
     this._toggleItemFlag = this._toggleItemFlag.bind(this);
-    this.locationDropdownSelect = this.locationDropdownSelect.bind(this)
-    this.toggleItemFlagOn()
+    this.locationDropdownSelect = this.locationDropdownSelect.bind(this);
+    this.toggleItemFlagOn();
   }
 
   _toggleItemFlag(itemFlag) {
@@ -43,7 +43,6 @@ class FilterPanel extends Component {
   }
 
   buildLocationDropdown() {
-    console.log("HI!!!")
     const buttonLists = [];
     this.props.locations.forEach(function (item, index) {
       buttonLists.push(<Dropdown.Item eventKey={item}>{item}</Dropdown.Item>)
@@ -64,7 +63,12 @@ class FilterPanel extends Component {
     const dropdown = this.refs.locationDropdownSelect;
     dropdown.title = event;
     this.activeLocation = event;
-    this.props.updateFilters('location', event)
+    if (event !== '(All)') {
+        this.props.updateFilters('location', event);
+    } else {
+        this.props.updateFilters('location', null);
+    }
+
   }
 
   /**

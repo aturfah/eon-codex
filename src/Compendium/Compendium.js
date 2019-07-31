@@ -7,7 +7,7 @@ import './Compendium.css';
 class Compendium extends Component {
   filterResults() {
     let filters = this.props.filters;
-    let dataset = new Array();
+    let dataset = [];
 
     // Chose right dataset
     if (filters.itemFlag) {

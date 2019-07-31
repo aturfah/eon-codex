@@ -54,6 +54,18 @@ function getLocations() {
   return output;
 }
 
+function getMonsterTypes() {
+    const monsterTypes = new Set()
+    monsterData.forEach(function (val) {
+        monsterTypes.add(val.cat)
+    });
+
+    const output = Array.from(monsterTypes);
+    output.sort();
+    output.unshift('(All)');
+    return output;
+}
+
 
 class App extends Component {
   /**
@@ -64,6 +76,7 @@ class App extends Component {
     super(props);
     this.state = defaultState();
     this.locations = getLocations();
+    this.monsterTypes = getMonsterTypes();
   }
 
   updateFilters(key, filterValue, clearFlag) {
@@ -92,7 +105,8 @@ class App extends Component {
       <div className="App">
         <FilterPanel
           updateFilters={this.updateFilters.bind(this)}
-          locations={this.locations}>
+          locations={this.locations}
+          monsterTypes={this.monsterTypes}>
         </FilterPanel>
         <Compendium
           filters={this.state.filters}

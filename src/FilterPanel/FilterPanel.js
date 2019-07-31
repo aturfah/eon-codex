@@ -23,6 +23,7 @@ class FilterPanel extends Component {
     this.itemFlag = true;
     this.activeLocation = this.props.locations[0];
     this.condItemFlag = '(All)';
+    this.monsterTypeFlag = '(All)';
 
     this._toggleItemFlag = this._toggleItemFlag.bind(this);
     this.locationDropdownSelect = this.locationDropdownSelect.bind(this);
@@ -120,6 +121,36 @@ class FilterPanel extends Component {
     }
   }
 
+  buildMonsterTypeDropdown() {
+    const buttonList = [];
+    let monsterTypeFlag = this.monsterTypeFlag;
+    this.props.monsterTypes.forEach(function (val) {
+        buttonList.push(
+          <Dropdown.Item
+            eventKey={val}
+            disabled={val===monsterTypeFlag} 
+            >
+           {val}
+        </Dropdown.Item>
+        )
+    });
+
+    return <DropdownButton
+        size="sm"
+        id="rare-item-dropdown-select"
+        ref="condItemDropdownSelect"
+        title={'Monster Type: ' + this.monsterTypeFlag}
+        onSelect={this.monsterTypeDropdownSelect}
+        className='paddedButton'
+        >
+      {buttonList}
+    </DropdownButton>
+  }
+
+  monsterTypeDropdownSelect() {
+    console.log("HELLO!")
+  }
+
   /**
    * Renders this React class
    * @return {div} Rendered dropdown button
@@ -141,6 +172,7 @@ class FilterPanel extends Component {
     // Build dropdown for Locations
     const locationDropdown = this.buildLocationDropdown();
     const condItemDropdown = this.buildCondItemDropdown();
+    const monsterTypeDropdown = this.buildMonsterTypeDropdown();
 
     return (
       <Container fluid={true} className="FilterPanel">
@@ -172,7 +204,10 @@ class FilterPanel extends Component {
               I am Items FilterPanel. Hate me.
             {condItemDropdown}
           </Col>
-          <Col xs="12" md="8" hidden={itemFiltersVisible}>I am Monsters FilterPanel. Love me.</Col>
+          <Col xs="12" md="8" hidden={itemFiltersVisible}>
+              I am Monsters FilterPanel. Love me.
+            {monsterTypeDropdown}
+          </Col>
         </Row>
       </Container>
     );

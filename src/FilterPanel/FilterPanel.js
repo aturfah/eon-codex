@@ -206,7 +206,7 @@ class FilterPanel extends Component {
 
   monsterSourceFilterType() {
     const textbox = this.refs.monsterSourceFilterText;
-    this.monsterNameFilter = textbox.value.toLowerCase().trim();
+    this.monsterNameFilter = textbox.value.toLowerCase();
     if (this.monsterNameFilter) {
         this.props.updateFilters('monsterSourceName', this.monsterNameFilter);
     } else {

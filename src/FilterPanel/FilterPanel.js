@@ -196,7 +196,7 @@ class FilterPanel extends Component {
     return (<InputGroup className="mb-3">
     <FormControl
     ref="monsterSourceFilterText"
-    placeholder="Monster SourceName"
+    placeholder="Monster Source Name"
     value={this.monsterNameFilter}
     aria-label="Monster Source Name"
     onChange={this.monsterSourceFilterType}
@@ -206,9 +206,9 @@ class FilterPanel extends Component {
 
   monsterSourceFilterType() {
     const textbox = this.refs.monsterSourceFilterText;
-    this.monsterNameFilter = textbox.value;
-    if (textbox.value) {
-        this.props.updateFilters('monsterSourceName', textbox.value);
+    this.monsterNameFilter = textbox.value.toLowerCase().trim();
+    if (this.monsterNameFilter) {
+        this.props.updateFilters('monsterSourceName', this.monsterNameFilter);
     } else {
         this.props.updateFilters('monsterSourceName', null);
     }

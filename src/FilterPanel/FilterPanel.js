@@ -9,6 +9,8 @@ import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
 import ToggleButton from 'react-bootstrap/ToggleButton';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown';
+import InputGroup from 'react-bootstrap/InputGroup';
+import FormControl from 'react-bootstrap/FormControl';
 
 /**
  * Dropdown element for class selection
@@ -26,6 +28,7 @@ class FilterPanel extends Component {
     this.monsterTypeFlag = '(All)';
 
     this._toggleItemFlag = this._toggleItemFlag.bind(this);
+    this.nameFilterType = this.nameFilterType.bind(this);
     this.locationDropdownSelect = this.locationDropdownSelect.bind(this);
     this.condItemDropdownSelect = this.condItemDropdownSelect.bind(this);
     this.monsterTypeDropdownSelect = this.monsterTypeDropdownSelect.bind(this);
@@ -166,6 +169,27 @@ class FilterPanel extends Component {
     }
   }
 
+  buildNameFilter() {
+    return (<InputGroup className="mb-3">
+        <FormControl
+        ref="nameFilterText"
+        placeholder="Name"
+        aria-label="Username"
+        aria-describedby="basic-addon1"
+        onChange={this.nameFilterType}
+        />
+    </InputGroup>)
+  }
+
+  nameFilterType() {
+    const textbox = this.refs.nameFilterText;
+    if (textbox.value) {
+        this.props.updateFilters('name', textbox.value);
+    } else {
+        this.props.updateFilters('name', null);
+    }
+  }
+
   /**
    * Renders this React class
    * @return {div} Rendered dropdown button
@@ -185,6 +209,7 @@ class FilterPanel extends Component {
     }
 
     // Build dropdown for Locations
+    const nameFilter = this.buildNameFilter();
     const locationDropdown = this.buildLocationDropdown();
     const condItemDropdown = this.buildCondItemDropdown();
     const monsterTypeDropdown = this.buildMonsterTypeDropdown();
@@ -214,6 +239,7 @@ class FilterPanel extends Component {
               </ToggleButtonGroup>
             </ButtonToolbar>
             {locationDropdown}
+            {nameFilter}
           </Col>
           <Col xs="12" md="8" hidden={!itemFiltersVisible}>
               I am Items FilterPanel. Hate me.

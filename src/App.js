@@ -19,7 +19,7 @@ function getLocations() {
   });
 
   monsterData.forEach(function (item, index) {
-    raw_output.add(item.loc.toLowerCase());
+    raw_output.add(item.location.toLowerCase());
   });
 
   // Remove all composite locations

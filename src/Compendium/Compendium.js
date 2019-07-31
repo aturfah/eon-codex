@@ -16,7 +16,10 @@ class Compendium extends Component {
       dataset = this.props.monsterData;
     }
 
-    // Do rest of stuff here
+    // Filter based on location if applicable
+
+
+    // TODO: Do rest of stuff here
 
     return dataset
   }

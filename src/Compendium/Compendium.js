@@ -39,10 +39,15 @@ class Compendium extends Component {
     console.log(this.props);
 
     const dataset = this.filterResults()
+    const doot = []
+    dataset.forEach(function (val) {
+        doot.push(<p>Name: {val.name}</p>)
+    });
 
     return (
       <div className="Compendium">
         I am Compendium. Fear me.
+        {doot}
       </div>
     );
   }

@@ -4,3 +4,8 @@
     min-height: 100px;
     flex: 1 1 auto;
 }
+
+p {
+    padding: 0;
+    margin: 0;
+}

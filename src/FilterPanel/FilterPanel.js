@@ -47,15 +47,23 @@ class FilterPanel extends Component {
 
   buildLocationDropdown() {
     const buttonLists = [];
+    let activeLocation = this.activeLocation;
     this.props.locations.forEach(function (item, index) {
-      buttonLists.push(<Dropdown.Item eventKey={item}>{item}</Dropdown.Item>)
+      buttonLists.push(
+        <Dropdown.Item
+            eventKey={item}
+            disabled={item===activeLocation}
+            >
+            {item}
+        </Dropdown.Item>
+      );
     });
 
     return <DropdownButton
         size="sm"
         id="location-dropdown-select"
         ref="locationDropdownSelect"
-        title={this.activeLocation}
+        title={'Location: ' + this.activeLocation}
         onSelect={this.locationDropdownSelect}
         >
       {buttonLists}
@@ -76,15 +84,23 @@ class FilterPanel extends Component {
 
   buildCondItemDropdown() {
     const buttonList = [];
+    let condItemFlag = this.condItemFlag;
     ['(All)', 'Yes', 'No'].forEach(function (val) {
-        buttonList.push(<Dropdown.Item eventKey={val}>{val}</Dropdown.Item>)
+        buttonList.push(
+          <Dropdown.Item
+            eventKey={val}
+            disabled={val===condItemFlag} 
+            >
+           {val}
+        </Dropdown.Item>
+        )
     });
 
     return <DropdownButton
         size="sm"
         id="rare-item-dropdown-select"
         ref="condItemDropdownSelect"
-        title={this.condItemFlag}
+        title={'Conditional: ' + this.condItemFlag}
         onSelect={this.condItemDropdownSelect}
         >
       {buttonList}
@@ -149,9 +165,11 @@ class FilterPanel extends Component {
               </ToggleButtonGroup>
             </ButtonToolbar>
             {locationDropdown}
+          </Col>
+          <Col xs="12" md="8" hidden={!itemFiltersVisible}>
+              I am Items FilterPanel. Hate me.
             {condItemDropdown}
           </Col>
-          <Col xs="12" md="8" hidden={!itemFiltersVisible}>I am Items FilterPanel. Hate me.</Col>
           <Col xs="12" md="8" hidden={itemFiltersVisible}>I am Monsters FilterPanel. Love me.</Col>
         </Row>
       </Container>

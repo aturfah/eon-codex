@@ -49,6 +49,7 @@ class FilterPanel extends Component {
     });
 
     return <DropdownButton
+        size="sm"
         id="location-dropdown-select"
         ref="locationDropdownSelect"
         title={this.activeLocation}
@@ -98,7 +99,7 @@ class FilterPanel extends Component {
           <Col xs="12" md="4">
             <p>I am FilterPanel. Fear me.</p>
             <ButtonToolbar className="CenterToolbar">
-              <ToggleButtonGroup type="radio" name="ItemMonstOpts" defaultValue={1}>
+              <ToggleButtonGroup type="radio" size="sm" name="ItemMonstOpts" defaultValue={1}>
                 <ToggleButton
                   onClick={this.toggleItemFlagOn.bind(this)}
                   value={1}
@@ -107,6 +108,7 @@ class FilterPanel extends Component {
                     Items
                 </ToggleButton>
                 <ToggleButton
+                  size="sm"
                   onClick={this.toggleItemFlagOff.bind(this)}
                   value={2}
                   variant={monsterButtonVariant}

@@ -7,3 +7,8 @@
 .CenterToolbar {
   justify-content: center;
 }
+
+.paddedButton {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

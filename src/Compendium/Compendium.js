@@ -7,7 +7,7 @@ import './Compendium.css';
 class Compendium extends Component {
   filterResults() {
     let filters = this.props.filters;
-    let dataset = null;
+    let dataset = new Array();
 
     // Chose right dataset
     if (filters.itemFlag) {
@@ -15,12 +15,18 @@ class Compendium extends Component {
     } else {
       dataset = this.props.monsterData;
     }
+    console.log("BEFORE FILTERS", dataset.length)
 
     // Filter based on location if applicable
-
+    if (filters.location) {
+        dataset = dataset.filter(function (datum) {
+            return datum.location.toLowerCase().includes(filters.location);
+        });
+    }
 
     // TODO: Do rest of stuff here
 
+    console.log("AFTER FILTERS", dataset.length)
     return dataset
   }
 

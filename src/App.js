@@ -14,12 +14,22 @@ function defaultState() {
 function getLocations() {
   // Get first list of items
   const raw_output = new Set();
-  itemData.forEach(function (item, index) {
-    raw_output.add(item.location.toLowerCase());
-  });
+  const order = [];
 
   monsterData.forEach(function (item, index) {
-    raw_output.add(item.location.toLowerCase());
+    const lc_loc = item.location.toLowerCase();
+    raw_output.add(lc_loc);
+    if (!order.includes(lc_loc)) {
+        order.push(lc_loc);
+    }
+  });
+
+  itemData.forEach(function (item, index) {
+    const lc_loc = item.location.toLowerCase();
+    raw_output.add(lc_loc);
+    if (!order.includes(lc_loc)) {
+        order.push(lc_loc);
+    }
   });
 
   // Remove all composite locations
@@ -32,7 +42,10 @@ function getLocations() {
 
   // Sort and return
   const output = Array.from(final_set);
-  output.sort();
+  output.sort(function (value) {
+      console.log(value, -1 * (order.indexOf(value) + order.length))
+      return -1 * (order.indexOf(value) + order.length)
+  });
   return output;
 }
 

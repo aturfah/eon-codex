@@ -28,11 +28,19 @@ class FilterPanel extends Component {
     this._toggleItemFlag = this._toggleItemFlag.bind(this);
     this.locationDropdownSelect = this.locationDropdownSelect.bind(this);
     this.condItemDropdownSelect = this.condItemDropdownSelect.bind(this);
+    this.monsterTypeDropdownSelect = this.monsterTypeDropdownSelect.bind(this);
     this.toggleItemFlagOn();
+  }
+
+  resetFlags() {
+    this.activeLocation = this.props.locations[0];
+    this.condItemFlag = '(All)';
+    this.monsterTypeFlag = '(All)';
   }
 
   _toggleItemFlag(itemFlag) {
     this.itemFlag = itemFlag;
+    this.resetFlags();
     this.props.updateFilters('itemFlag', itemFlag, true);
   }
 
@@ -137,8 +145,8 @@ class FilterPanel extends Component {
 
     return <DropdownButton
         size="sm"
-        id="rare-item-dropdown-select"
-        ref="condItemDropdownSelect"
+        id="monster-type-dropdown-select"
+        ref="monsterTypeDropdownSelect"
         title={'Monster Type: ' + this.monsterTypeFlag}
         onSelect={this.monsterTypeDropdownSelect}
         className='paddedButton'
@@ -147,8 +155,15 @@ class FilterPanel extends Component {
     </DropdownButton>
   }
 
-  monsterTypeDropdownSelect() {
-    console.log("HELLO!")
+  monsterTypeDropdownSelect(event) {
+    const dropdown = this.refs.monsterTypeDropdownSelect;
+    dropdown.title = event;
+    this.monsterTypeFlag = event;
+    if (event !== '(All)') {
+        this.props.updateFilters('monsterType', event);
+    } else {
+        this.props.updateFilters('monsterType', null);
+    }
   }
 
   /**

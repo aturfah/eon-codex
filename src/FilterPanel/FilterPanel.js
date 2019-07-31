@@ -186,7 +186,7 @@ class FilterPanel extends Component {
     const textbox = this.refs.nameFilterText;
     this.nameFilter = textbox.value;
     if (textbox.value) {
-        this.props.updateFilters('name', textbox.value);
+        this.props.updateFilters('name', textbox.value.toLowerCase());
     } else {
         this.props.updateFilters('name', null);
     }
@@ -206,9 +206,9 @@ class FilterPanel extends Component {
 
   monsterSourceFilterType() {
     const textbox = this.refs.monsterSourceFilterText;
-    this.monsterNameFilter = textbox.value.toLowerCase();
+    this.monsterNameFilter = textbox.value;
     if (this.monsterNameFilter) {
-        this.props.updateFilters('monsterSourceName', this.monsterNameFilter);
+        this.props.updateFilters('monsterSourceName', this.monsterNameFilter.toLowerCase());
     } else {
         this.props.updateFilters('monsterSourceName', null);
     }

@@ -1,8 +1,7 @@
 .FilterPanel {
     color: #c6ffec;
     background-color: #18549b;
-    height: 15%;
-    min-height: 100px;
+    _height: 15%;
   }
 
 .CenterToolbar {

@@ -32,6 +32,13 @@ class Compendium extends Component {
         });
     }
 
+    // Filter Monsters based on Monster Type
+    if (!filters.itemFlag && filters.monsterType !== undefined) {
+        dataset = dataset.filter(function(datum) {
+            return datum.cat === filters.monsterType;
+        });
+    }
+
     // TODO: Do rest of stuff here
 
     console.log("AFTER FILTERS", dataset.length)

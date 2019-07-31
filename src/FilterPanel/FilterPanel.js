@@ -65,6 +65,7 @@ class FilterPanel extends Component {
         ref="locationDropdownSelect"
         title={'Location: ' + this.activeLocation}
         onSelect={this.locationDropdownSelect}
+        className='paddedButton'
         >
       {buttonLists}
     </DropdownButton>
@@ -102,6 +103,7 @@ class FilterPanel extends Component {
         ref="condItemDropdownSelect"
         title={'Conditional: ' + this.condItemFlag}
         onSelect={this.condItemDropdownSelect}
+        className='paddedButton'
         >
       {buttonList}
     </DropdownButton>

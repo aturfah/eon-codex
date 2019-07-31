@@ -27,6 +27,7 @@ class FilterPanel extends Component {
 
     this._toggleItemFlag = this._toggleItemFlag.bind(this);
     this.nameFilterType = this.nameFilterType.bind(this);
+    this.monsterSourceFilterType = this.monsterSourceFilterType.bind(this);
     this.locationDropdownSelect = this.locationDropdownSelect.bind(this);
     this.condItemDropdownSelect = this.condItemDropdownSelect.bind(this);
     this.monsterTypeDropdownSelect = this.monsterTypeDropdownSelect.bind(this);
@@ -38,6 +39,7 @@ class FilterPanel extends Component {
     this.condItemFlag = '(All)';
     this.monsterTypeFlag = '(All)';
     this.nameFilter = '';
+    this.monsterNameFilter = '';
   }
 
   _toggleItemFlag(itemFlag) {
@@ -174,8 +176,7 @@ class FilterPanel extends Component {
         ref="nameFilterText"
         placeholder="Name"
         value={this.nameFilter}
-        aria-label="Username"
-        aria-describedby="basic-addon1"
+        aria-label="Name"
         onChange={this.nameFilterType}
         />
     </InputGroup>)
@@ -188,6 +189,28 @@ class FilterPanel extends Component {
         this.props.updateFilters('name', textbox.value);
     } else {
         this.props.updateFilters('name', null);
+    }
+  }
+
+  buildMonsterSourceFilter() {
+    return (<InputGroup className="mb-3">
+    <FormControl
+    ref="monsterSourceFilterText"
+    placeholder="Monster SourceName"
+    value={this.monsterNameFilter}
+    aria-label="Monster Source Name"
+    onChange={this.monsterSourceFilterType}
+    />
+    </InputGroup>)
+  }
+
+  monsterSourceFilterType() {
+    const textbox = this.refs.monsterSourceFilterText;
+    this.monsterNameFilter = textbox.value;
+    if (textbox.value) {
+        this.props.updateFilters('monsterSourceName', textbox.value);
+    } else {
+        this.props.updateFilters('monsterSourceName', null);
     }
   }
 
@@ -213,6 +236,7 @@ class FilterPanel extends Component {
     const nameFilter = this.buildNameFilter();
     const locationDropdown = this.buildLocationDropdown();
     const condItemDropdown = this.buildCondItemDropdown();
+    const monsterSourceTextField = this.buildMonsterSourceFilter()
     const monsterTypeDropdown = this.buildMonsterTypeDropdown();
 
     return (
@@ -245,6 +269,7 @@ class FilterPanel extends Component {
           <Col xs="12" md="8" hidden={!itemFiltersVisible}>
               I am Items FilterPanel. Hate me.
             {condItemDropdown}
+            {monsterSourceTextField}
           </Col>
           <Col xs="12" md="8" hidden={itemFiltersVisible}>
               I am Monsters FilterPanel. Love me.

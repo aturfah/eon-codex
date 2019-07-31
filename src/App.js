@@ -35,7 +35,6 @@ function getLocations() {
       });
   });
 
-
   // Remove all composite locations
   const final_set = new Set();
   raw_output.forEach(function (item, index) {

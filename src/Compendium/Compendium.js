@@ -24,6 +24,13 @@ class Compendium extends Component {
         });
     }
 
+    // Filter based on name
+    if (filters.name) {
+        dataset = dataset.filter(function (datum) {
+            return datum.name.toLowerCase().includes(filters.name);
+        });
+    }
+
     // Filter Items based on Rare item flag
     if (filters.itemFlag && filters.condItem !== undefined) {
         let condItemFlag = (filters.condItem === 'Yes');

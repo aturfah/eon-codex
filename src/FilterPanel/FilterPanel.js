@@ -295,7 +295,6 @@ class FilterPanel extends Component {
     value={this.maxCostFilter}
     aria-label="Maximum Cost"
     onChange={this.maxCostFilterType}
-    className="leftPadded"
     />
     </InputGroup>)
   }

@@ -73,6 +73,8 @@ class Compendium extends Component {
                 newDataset.push(value)
             }
         });
+        console.log(dataset.length)
+        console.log(newDataset.length)
         dataset = newDataset;
     } 
 
@@ -100,7 +102,7 @@ class Compendium extends Component {
     const dataset = this.filterResults()
     const doot = []
     dataset.forEach(function (val) {
-        doot.push(<p>Name: {val.name}</p>)
+        doot.push(<p key={val.name + '|' + val.monster_source}>Name: {val.name}</p>)
     });
 
     return (

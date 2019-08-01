@@ -47,7 +47,6 @@ function getLocations() {
   // Sort and return
   const output = Array.from(final_set);
   output.sort(function (value) {
-      console.log(value, -1 * (order.indexOf(value) + order.length))
       return -1 * (order.indexOf(value) + order.length)
   });
   output.unshift('(All)') // Empty first element

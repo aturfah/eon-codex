@@ -278,6 +278,7 @@ class FilterPanel extends Component {
   }
 
   buildCostFilter() {
+    // TODO: Add postscript for EN
     return (<InputGroup className="mb-3">
     <FormControl
     ref="minCostFilter"

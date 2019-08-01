@@ -80,7 +80,7 @@ class FilterPanel extends Component {
         ref="locationDropdownSelect"
         title={'Location: ' + this.activeLocation}
         onSelect={this.locationDropdownSelect}
-        className='paddedButton'
+        className="leftPadded"
         >
       {buttonLists}
     </DropdownButton>
@@ -118,7 +118,6 @@ class FilterPanel extends Component {
         ref="condItemDropdownSelect"
         title={'Conditional: ' + this.condItemFlag}
         onSelect={this.condItemDropdownSelect}
-        className='paddedButton'
         >
       {buttonList}
     </DropdownButton>
@@ -236,7 +235,7 @@ class FilterPanel extends Component {
         ref="gatherPointDropdownSelect"
         title={'Gather Point: ' + this.gatherPointFlag}
         onSelect={this.gatherPointDropdownSelect}
-        className='paddedButton'
+        className="leftPadded"
         >
       {buttonList}
     </DropdownButton>
@@ -323,14 +322,16 @@ class FilterPanel extends Component {
                     Monsters
                 </ToggleButton>
               </ToggleButtonGroup>
+              {locationDropdown}
             </ButtonToolbar>
-            {locationDropdown}
             {nameFilter}
           </Col>
           <Col xs="12" md="8" hidden={!itemFiltersVisible}>
               I am Items FilterPanel. Hate me.
-            {condItemDropdown}
-            {gatherPointDropdown}
+            <ButtonToolbar className="CenterToolbar paddedButton">
+                {condItemDropdown}
+                {gatherPointDropdown}
+            </ButtonToolbar>
             {monsterSourceTextField}
           </Col>
           <Col xs="12" md="8" hidden={itemFiltersVisible}>

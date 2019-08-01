@@ -890,11 +890,6 @@ var monsterData = [
         "location": "Ancient Forest"
     },
     {
-        "name": "Rushing Raptor",
-        "cat": "FOEs",
-        "location": "Ancient Forest"
-    },
-    {
         "name": "Sea Wanderer",
         "cat": "FOEs",
         "location": "Undersea Grotto"
@@ -1035,7 +1030,7 @@ var monsterData = [
         "location": "Buried Castle"
     },
     {
-        "name": "Cocky Capacitor",
+        "name": "Cocky Capacitor (Big)",
         "cat": "FOEs",
         "location": "Buried Castle"
     },

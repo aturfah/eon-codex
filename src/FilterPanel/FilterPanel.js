@@ -199,7 +199,7 @@ class FilterPanel extends Component {
   }
 
   buildMonsterSourceFilter() {
-    return (<InputGroup className="mb-3">
+    return (<InputGroup className="mb-3 paddedButton">
     <FormControl
     ref="monsterSourceFilterText"
     placeholder="Monster Source Name"
@@ -279,7 +279,6 @@ class FilterPanel extends Component {
   }
 
   buildCostFilter() {
-    // TODO: Add postscript for EN
     return (
     <Row>
         <Col xs='12' sm='6'>

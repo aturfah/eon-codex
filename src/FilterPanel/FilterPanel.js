@@ -32,6 +32,8 @@ class FilterPanel extends Component {
     this.condItemDropdownSelect = this.condItemDropdownSelect.bind(this);
     this.monsterTypeDropdownSelect = this.monsterTypeDropdownSelect.bind(this);
     this.gatherPointDropdownSelect = this.gatherPointDropdownSelect.bind(this);
+    this.minCostFilterType = this.minCostFilterType.bind(this);
+    this.maxCostFilterType = this.maxCostFilterType.bind(this);
     this.toggleItemFlagOn();
   }
 
@@ -41,7 +43,9 @@ class FilterPanel extends Component {
     this.monsterTypeFlag = '(All)';
     this.nameFilter = '';
     this.monsterNameFilter = '';
-    this.gatherPointFlag = '(N/A)'
+    this.gatherPointFlag = '(N/A)';
+    this.minCostFilter = '';
+    this.maxCostFilter = '';
   }
 
   _toggleItemFlag(itemFlag) {
@@ -273,6 +277,49 @@ class FilterPanel extends Component {
     this.props.updateFilters('takeFlag', takeFlag);
   }
 
+  buildCostFilter() {
+    return (<InputGroup className="mb-3">
+    <FormControl
+    ref="minCostFilter"
+    placeholder="Minimum Cost"
+    value={this.minCostFilter}
+    aria-label="Minimum Cost"
+    onChange={this.minCostFilterType}
+    />
+
+    <FormControl
+    ref="maxCostFilter"
+    placeholder="Maximum Cost"
+    value={this.maxCostFilter}
+    aria-label="Maximum Cost"
+    onChange={this.maxCostFilterType}
+    className="leftPadded"
+    />
+    </InputGroup>)
+  }
+
+  minCostFilterType() {
+    const textbox = this.refs.minCostFilter;
+    this.minCostFilter = textbox.value;
+    console.log("MIN FILTER TYPE", this.minCostFilter);
+    if (this.minCostFilter) {
+        this.props.updateFilters('minCost', this.minCostFilter);
+    } else {
+        this.props.updateFilters('minCost', null);
+    }
+  }
+
+  maxCostFilterType() {
+    const textbox = this.refs.maxCostFilter;
+    this.maxCostFilter = textbox.value;
+    console.log("MAX FILTER TYPE", this.maxCostFilter);
+    if (this.minCostFilter) {
+        this.props.updateFilters('minCost', this.minCostFilter);
+    } else {
+        this.props.updateFilters('minCost', null);
+    }
+  }
+
   /**
    * Renders this React class
    * @return {div} Rendered dropdown button
@@ -298,6 +345,7 @@ class FilterPanel extends Component {
     const gatherPointDropdown = this.buildGatherPointDropdown();
     const monsterSourceTextField = this.buildMonsterSourceFilter()
     const monsterTypeDropdown = this.buildMonsterTypeDropdown();
+    const costFilter = this.buildCostFilter()
 
     return (
       <Container fluid={true} className="FilterPanel">
@@ -332,6 +380,7 @@ class FilterPanel extends Component {
                 {condItemDropdown}
                 {gatherPointDropdown}
             </ButtonToolbar>
+            {costFilter}
             {monsterSourceTextField}
           </Col>
           <Col xs="12" md="8" hidden={itemFiltersVisible}>

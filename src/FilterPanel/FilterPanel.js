@@ -280,7 +280,9 @@ class FilterPanel extends Component {
 
   buildCostFilter() {
     // TODO: Add postscript for EN
-    return (<InputGroup className="mb-3">
+    return (
+    <Row>
+        <Col xs='12' sm='6'>
     <FormControl
     ref="minCostFilter"
     placeholder="Minimum Cost"
@@ -288,15 +290,18 @@ class FilterPanel extends Component {
     aria-label="Minimum Cost"
     onChange={this.minCostFilterType}
     />
-
-    <FormControl
+        </Col>
+        <Col xs='12' sm='6'>
+<FormControl
     ref="maxCostFilter"
     placeholder="Maximum Cost"
     value={this.maxCostFilter}
     aria-label="Maximum Cost"
     onChange={this.maxCostFilterType}
     />
-    </InputGroup>)
+        </Col>
+    </Row>
+    )
   }
 
   minCostFilterType() {
@@ -317,10 +322,10 @@ class FilterPanel extends Component {
     if(isNumber(textbox.value)) {
         this.maxCostFilter = textbox.value;
         console.log("MAX FILTER TYPE", this.maxCostFilter);
-        if (this.minCostFilter) {
-            this.props.updateFilters('minCost', this.minCostFilter);
+        if (this.maxCostFilter) {
+            this.props.updateFilters('maxCost', this.maxCostFilter);
         } else {
-            this.props.updateFilters('minCost', null);
+            this.props.updateFilters('maxCost', null);
         }
     }
   }

@@ -3784,7 +3784,7 @@ var itemData = [
         "location": "Northern Shrine and Forest of the End"
     },
     {
-        "name": "Frozen Wing",
+        "name": "Haze Wing",
         "raw_source": "Hazefly Conditional Drop",
         "price": "2385",
         "conditional": true,
@@ -4478,13 +4478,13 @@ var itemData = [
     },
     {
         "name": "Poison Wing",
-        "raw_source": "Venomfly Drop 1",
+        "raw_source": "Chimaera Conditional Drop",
         "price": "21000",
         "conditional": false,
         "take_flag": false,
         "chop_flag": false,
         "mine_flag": false,
-        "monster_source": "venomfly",
+        "monster_source": "chimaera",
         "location": "Ancient Forest and Blossom Bridge"
     },
     {
@@ -4885,13 +4885,13 @@ var itemData = [
     },
     {
         "name": "Frozen Wing",
-        "raw_source": "Hazefly Conditional Drop",
+        "raw_source": "Blizzard King Drop 1",
         "price": "80000",
         "conditional": true,
         "take_flag": false,
         "chop_flag": false,
         "mine_flag": false,
-        "monster_source": "hazefly",
+        "monster_source": "blizzard king",
         "location": "Abyssal Shrine and Illusory Woods"
     },
     {

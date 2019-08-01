@@ -78,6 +78,19 @@ class Compendium extends Component {
         dataset = newDataset;
     } 
 
+    if (filters.itemFlag && filters.minCost) {
+        console.log('MIN COST', filters.minCost)
+        dataset = dataset.filter(function (datum) {
+            return parseInt(datum.price) >= parseInt(filters.minCost);
+        });
+    }
+
+    if (filters.itemFlag && filters.maxCost) {
+        dataset = dataset.filter(function (datum) {
+            return parseInt(datum.price) <= parseInt(filters.maxCost);
+        });
+    }
+
     // Filter Monsters based on Monster Type
     if (!filters.itemFlag && filters.monsterType !== undefined) {
         dataset = dataset.filter(function(datum) {

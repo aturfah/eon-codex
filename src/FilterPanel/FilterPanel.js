@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './FilterPanel.css';
+import {isNumber} from '../helpers';
 
 import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col';
@@ -301,23 +302,27 @@ class FilterPanel extends Component {
 
   minCostFilterType() {
     const textbox = this.refs.minCostFilter;
-    this.minCostFilter = textbox.value;
-    console.log("MIN FILTER TYPE", this.minCostFilter);
-    if (this.minCostFilter) {
-        this.props.updateFilters('minCost', this.minCostFilter);
-    } else {
-        this.props.updateFilters('minCost', null);
+    if(isNumber(textbox.value)) {
+        this.minCostFilter = textbox.value;
+        console.log("MIN FILTER TYPE", this.minCostFilter);
+        if (this.minCostFilter) {
+            this.props.updateFilters('minCost', this.minCostFilter);
+        } else {
+            this.props.updateFilters('minCost', null);
+        }
     }
   }
 
   maxCostFilterType() {
     const textbox = this.refs.maxCostFilter;
-    this.maxCostFilter = textbox.value;
-    console.log("MAX FILTER TYPE", this.maxCostFilter);
-    if (this.minCostFilter) {
-        this.props.updateFilters('minCost', this.minCostFilter);
-    } else {
-        this.props.updateFilters('minCost', null);
+    if(isNumber(textbox.value)) {
+        this.maxCostFilter = textbox.value;
+        console.log("MAX FILTER TYPE", this.maxCostFilter);
+        if (this.minCostFilter) {
+            this.props.updateFilters('minCost', this.minCostFilter);
+        } else {
+            this.props.updateFilters('minCost', null);
+        }
     }
   }
 

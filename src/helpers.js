@@ -10,3 +10,8 @@ export function capitalizeWords(inputStr) {
 
     return outputArr.join(' ');
 }
+
+export function isNumber(input) {
+    const re = /^[0-9\b]*$/;
+    return re.test(input) || !input;
+}

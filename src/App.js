@@ -4,6 +4,7 @@ import FilterPanel from './FilterPanel/FilterPanel';
 import Compendium from './Compendium/Compendium';
 import itemData from './ItemData';
 import monsterData from './MonsterData';
+import {capitalizeWords} from './helpers'
 
 function defaultState() {
   return {
@@ -39,7 +40,7 @@ function getLocations() {
   const final_set = new Set();
   raw_output.forEach(function (item, index) {
     if(!item.includes('and')) {
-      final_set.add(item);
+      final_set.add(capitalizeWords(item));
     }
   });
 

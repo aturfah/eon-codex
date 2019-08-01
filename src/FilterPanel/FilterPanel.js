@@ -91,7 +91,7 @@ class FilterPanel extends Component {
     dropdown.title = event;
     this.activeLocation = event;
     if (event !== '(All)') {
-        this.props.updateFilters('location', event);
+        this.props.updateFilters('location', event.toLowerCase());
     } else {
         this.props.updateFilters('location', null);
     }

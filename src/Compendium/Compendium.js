@@ -78,6 +78,7 @@ class Compendium extends Component {
         dataset = newDataset;
     } 
 
+    // Filter items based on min cost
     if (filters.itemFlag && filters.minCost) {
         console.log('MIN COST', filters.minCost)
         dataset = dataset.filter(function (datum) {
@@ -85,6 +86,7 @@ class Compendium extends Component {
         });
     }
 
+    // Filter items based on max cost
     if (filters.itemFlag && filters.maxCost) {
         dataset = dataset.filter(function (datum) {
             return parseInt(datum.price) <= parseInt(filters.maxCost);

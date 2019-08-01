@@ -4480,7 +4480,7 @@ var itemData = [
         "name": "Poison Wing",
         "raw_source": "Chimaera Conditional Drop",
         "price": "21000",
-        "conditional": false,
+        "conditional": true,
         "take_flag": false,
         "chop_flag": false,
         "mine_flag": false,

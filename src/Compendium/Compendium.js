@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './Compendium.css';
 import ItemInfoPanel from './ItemInfoPanel';
+import MonsterInfoPanel from './MonsterInfoPanel';
 
 import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col';
@@ -31,11 +32,6 @@ class Compendium extends Component {
       dataset = this.props.itemData;
     } else {
       dataset = this.props.monsterData;
-    }
-
-    if (this.active && !dataset.includes(this.active)) {
-        console.log("Active missing...")
-        this.active = null;
     }
 
     console.log("BEFORE FILTERS", dataset.length)
@@ -125,6 +121,13 @@ class Compendium extends Component {
 
     // TODO: Do rest of stuff here
 
+
+    // Reset active
+    if (this.active && !dataset.includes(this.active)) {
+        console.log("Active missing...")
+        this.active = null;
+    }
+
     console.log("AFTER FILTERS", dataset.length)
     return dataset
   }
@@ -156,7 +159,10 @@ class Compendium extends Component {
         >
         </ItemInfoPanel>
     } else {
-        infoPanel = 'Doot Doot Monsters'
+        infoPanel = <MonsterInfoPanel
+            active={this.active}
+        >
+        </MonsterInfoPanel>
     }
 
     return (

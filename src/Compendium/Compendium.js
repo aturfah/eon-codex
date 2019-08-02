@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './Compendium.css';
-import InfoPanel from './InfoPanel';
+import ItemInfoPanel from './ItemInfoPanel';
 
 import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col';
@@ -17,12 +17,16 @@ class Compendium extends Component {
 
     setActive(datum) {
         console.log('ACTIVE -->')
-    console.log(datum);
+        console.log(datum);
         const newState = {
-        active: datum
+            active: datum
+        };
+        this.setState(newState);
     };
-    this.setState(newState);
-  };
+
+    resetActive() {
+        this.setState({});
+    }
 
   filterResults() {
     let filters = this.props.filters;
@@ -145,6 +149,16 @@ class Compendium extends Component {
         </p>);
     });
 
+    let infoPanel = null;
+    if (this.props.filters.itemFlag) {
+        infoPanel = <ItemInfoPanel
+            active={this.state.active}
+        >
+        </ItemInfoPanel>
+    } else {
+        infoPanel = 'Doot Doot Monsters'
+    }
+
     return (
       <Container fluid={true} className="Compendium">
         <Row>
@@ -152,10 +166,7 @@ class Compendium extends Component {
             I am Compendium Menu. Click me.
             {doot}
         </Col>
-        <InfoPanel
-          active={this.state.active}
-        >
-        </InfoPanel>
+        {infoPanel}
         </Row>
       </Container>
     );

@@ -4,7 +4,7 @@ import {capitalizeWords} from '../helpers';
 
 import Col from 'react-bootstrap/Col';
 
-class InfoPanel extends Component {
+class ItemInfoPanel extends Component {
 
   renderActive(activeItem) {
       if (!activeItem) {
@@ -54,4 +54,4 @@ class InfoPanel extends Component {
   }
 }
 
-export default InfoPanel;
+export default ItemInfoPanel;

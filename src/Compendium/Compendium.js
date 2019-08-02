@@ -12,21 +12,15 @@ import Row from 'react-bootstrap/Row';
 class Compendium extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.active = null;
     }
 
     setActive(datum) {
         console.log('ACTIVE -->')
         console.log(datum);
-        const newState = {
-            active: datum
-        };
-        this.setState(newState);
+        this.active = datum;
+        this.forceUpdate();
     };
-
-    resetActive() {
-        this.setState({});
-    }
 
   filterResults() {
     let filters = this.props.filters;
@@ -38,6 +32,12 @@ class Compendium extends Component {
     } else {
       dataset = this.props.monsterData;
     }
+
+    if (this.active && !dataset.includes(this.active)) {
+        console.log("Active missing...")
+        this.active = null;
+    }
+
     console.log("BEFORE FILTERS", dataset.length)
 
     // Filter based on location if applicable
@@ -152,7 +152,7 @@ class Compendium extends Component {
     let infoPanel = null;
     if (this.props.filters.itemFlag) {
         infoPanel = <ItemInfoPanel
-            active={this.state.active}
+            active={this.active}
         >
         </ItemInfoPanel>
     } else {

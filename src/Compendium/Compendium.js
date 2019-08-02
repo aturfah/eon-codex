@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 import './Compendium.css';
 
+import Container from 'react-bootstrap/Container'
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+
 /**
  * Dropdown element for class selection
  */
@@ -121,10 +125,17 @@ class Compendium extends Component {
     });
 
     return (
-      <div className="Compendium">
-        I am Compendium. Fear me.
-        {doot}
-      </div>
+      <Container fluid={true} className="Compendium">
+        <Row>
+        <Col xs="3">
+            I am Compendium Menu. Fear me.
+            {doot}
+        </Col>
+        <Col xs="9">
+            I am Copendium Info Panel. Fear me.
+        </Col>
+        </Row>
+      </Container>
     );
   }
 }

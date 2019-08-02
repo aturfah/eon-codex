@@ -128,11 +128,11 @@ class Compendium extends Component {
       <Container fluid={true} className="Compendium">
         <Row>
         <Col xs="3">
-            I am Compendium Menu. Fear me.
+            I am Compendium Menu. Click me.
             {doot}
         </Col>
         <Col xs="9">
-            I am Copendium Info Panel. Fear me.
+            I am Copendium Info Panel. Read me.
         </Col>
         </Row>
       </Container>

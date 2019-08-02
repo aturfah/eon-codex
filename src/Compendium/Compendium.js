@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './Compendium.css';
+import InfoPanel from './InfoPanel';
 
 import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col';
@@ -9,6 +10,20 @@ import Row from 'react-bootstrap/Row';
  * Dropdown element for class selection
  */
 class Compendium extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {};
+    }
+
+    setActive(datum) {
+        console.log('ACTIVE -->')
+    console.log(datum);
+        const newState = {
+        active: datum
+    };
+    this.setState(newState);
+  };
+
   filterResults() {
     let filters = this.props.filters;
     let dataset = [];
@@ -120,8 +135,14 @@ class Compendium extends Component {
 
     const dataset = this.filterResults()
     const doot = []
+    const updateFunc = this.setActive.bind(this);
     dataset.forEach(function (val) {
-        doot.push(<p key={val.name + '|' + val.monster_source}>Name: {val.name}</p>)
+        doot.push(<p
+            key={val.name + '|' + val.monster_source}
+            onClick={() => updateFunc(val)}
+            >
+            Name: {val.name}
+        </p>);
     });
 
     return (
@@ -131,9 +152,10 @@ class Compendium extends Component {
             I am Compendium Menu. Click me.
             {doot}
         </Col>
-        <Col xs="9">
-            I am Copendium Info Panel. Read me.
-        </Col>
+        <InfoPanel
+          active={this.state.active}
+        >
+        </InfoPanel>
         </Row>
       </Container>
     );

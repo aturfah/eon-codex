@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+import {capitalizeWords} from '../helpers';
+
 import Col from 'react-bootstrap/Col';
 
 class InfoPanel extends Component {
@@ -8,7 +10,37 @@ class InfoPanel extends Component {
       if (!activeItem) {
           return (<p>Please select an item to continue.</p>)
       }
-        return (<p>{activeItem.name}</p>)
+      let conditionalText = 'No';
+      if (activeItem.conditional) {
+        conditionalText = 'Yes';
+      }
+
+      let takeChopMineText = 'No';
+      if (activeItem.take_flag || activeItem.mine_flag || activeItem.chop_flag) {
+          takeChopMineText = 'Yes';
+      }
+
+      let monsterSourceText = 'N/A';
+      if (activeItem.monster_source) {
+          monsterSourceText = capitalizeWords(activeItem.monster_source);
+      }
+
+      let locationText = 'N/A';
+      if (activeItem.location) {
+          locationText = capitalizeWords(activeItem.location);
+      }
+
+        return (
+            <div>
+                <h1>{activeItem.name}</h1>
+                <p>Location: {locationText}</p>
+                <p>Price: {activeItem.price}en</p>
+                <p>Monster Source: {monsterSourceText}</p>
+                <p>Conditional: {conditionalText}</p>
+                <p>Take/Chop/Mine: {takeChopMineText}</p>
+                
+            </div>
+        )
   }
 
   render() {

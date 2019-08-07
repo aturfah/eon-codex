@@ -162,13 +162,35 @@ def parse_item_source(item_info, monster_data):
         monst_data = monster_data.get(monster_source, {})
         if not monst_data:
             raise RuntimeError("MONSTER DATA NOT FOUND: {}".format(monster_source))
-        
+
         item_loc = monst_data["loc"]
 
+    conditional_drop_data = parse_conditional_drops()
     new_item["monster_source"] = monster_source
     new_item["location"] = item_loc
+    if conditional_drop:
+        new_item["cond_method"] = conditional_drop_data[monster_source.lower()]
 
     return new_item
+
+
+def parse_conditional_drops():
+    data = None
+    with open("conditional.txt", "r") as cond_file:
+        data = [line.strip() for line in cond_file.readlines()]
+
+    output = {}
+    for datum in data:
+        monster, method = datum.split(": ")
+        monster = str(monster).lower().strip()
+        method = str(method).strip()
+
+        if monster in output:
+            raise RuntimeError("Duplicate Monsters in results")
+
+        output[monster] = method
+
+    return output
 
 
 def parse_items(monster_data, filename="eon_items.html"):

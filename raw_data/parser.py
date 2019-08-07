@@ -212,6 +212,17 @@ def output_json(data, filename):
         json.dump(data, fp)
 
 
+def output_js(old_filename, new_filename, var_name):
+    new_file_data = "var {variable} = {data}"
+    data = None
+    with open(old_filename, "r") as file_data:
+        data = file_data.read()
+    
+    with open(new_filename, 'w') as nf:
+        nf.write(new_file_data.format(variable=var_name,
+                                      data=data))
+
+
 if __name__ == "__main__":
     print("Parsing monster data...")
     monster_data, mn_data_dict = parse_monsters()
@@ -222,3 +233,7 @@ if __name__ == "__main__":
     print("Outputting files...")
     output_json(monster_data, "monsters.json")
     output_json(item_data, "items.json")
+
+    print("Putting files as JS files")
+    output_js("monsters.json", "MonsterData.js", "monsterData")
+    output_js("items.json", "ItemData.js", "itemData")

@@ -1,0 +1,82 @@
+Alraune: Kill while sleeping
+Baboon: Kill while petrified
+Basilisk: Kill while blinded
+Blizzard King: Kill with ice damage
+Blue Wallaby: Kill with stab damage
+Boiling Lizard: Kill while sleeping
+Bugbeast: Kill while arm bound
+Cannon Palm: Kill while leg bound
+Cernunnos: Kill while fully bound
+Chameleon King: Kill while panicked
+Chimaera: Kill with poison damage
+Clawed Mole: Kill while arm bound
+Claw Beetle: Kill while blinded
+Craven Mantrap: Kill while sleeping
+Croaker Slug: Kill while head bound
+Cruella: Kill while fully bound
+Cube Gel: Kill while sleeping
+Cutter: Kill with cut damage
+Diabolix: Kill while fully bound
+Dinogator: Kill with stab damage
+Dire Wolf: Kill with ice damage
+Evil Eye: Kill while arm bound
+Fenrir: Kill on first turn
+Finned Slug: Kill with stab damage
+Flame Lynx: Kill while sleeping
+Flame Rat: Kill while paralyzed
+Forbidden Fruit: Kill while paralyzed
+Forest Soldier: Kill with volt damage
+Furious Hawk: Kill while petrified
+Ghost Owl: Kill while head bound
+Giant Ladybug: Kill while panicked
+Giant Moa: Kill while paralyzed
+Glacier Spawn: Kill with fire damage
+Golem: Kill while blinded
+Gourmet Pelican: Kill while panicked
+Great Dragon: Kill with fire damage
+Greedy Lizard: Kill with fire damage
+Harpuia: Kill with curse damage
+Hazefly: Kill with ice damage
+Hexgourd: Kill with any elemental type
+High Onnep: Kill with ice damage
+Hippogryph: Kill while arm bound
+Hungry Coral: Kill with poison damage
+Iwaoropenelep: Kill while paralyzed
+Juggernaut: Kill while leg bound
+Ketos: Kill while panicked
+King Snail: Kill with volt damage
+Lamia: Kill while head bound
+Largebill: Kill while arm bound
+Leaf Hat Tanuki: Kill with fire damage
+Longisquama: Kill with ice damage
+Mad Crawler: Kill while blinded
+Magma Spawn: Kill with ice damage
+Medusa Tree: Kill with poison damage
+Moth Lord: Kill while petrified
+Pandora Ananas: Kill while blinded
+Platinum Pillbug: Kill while head bound
+Ptarmigan: Kill with bash damage
+Queen Ant: Kill while head bound
+Rebel Wolf: Kill while panicked
+Red Lion: Kill while sleeping
+Roly-Poly Tanuki: Kill while sleeping
+Rushing Raptor: Kill with cut damage
+Salamander: Kill while leg bound
+Sauroposeidon: Kill with bash damage
+Scaled Dragon: Kill while leg bound
+Scylla: Kill with curse damage
+Shellbeast: Kill while paralyzed
+Silent Assassin: Kill on first turn
+Sleipnir: Kill with fire damage
+Spraying Skunk: Kill with any physical type
+Starry Slug: Kill with poison damage
+Storm Emperor: Kill with volt damage
+Suicide Hare: Kill with instant death
+Tortiron: Kill while leg bound
+Undead Soldier: Kill with stab damage
+Volt Cat: Kill while panicked
+Wandering Eye: Kill while arm bound
+Whorled Puffer: Kill while paralyzed
+Wicked Silurus: Kill while petrified
+Woodfly: Kill with volt damage
+Wyvern: Kill on first turn

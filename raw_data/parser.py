@@ -257,5 +257,5 @@ if __name__ == "__main__":
     output_json(item_data, "items.json")
 
     print("Putting files as JS files")
-    output_js("monsters.json", "MonsterInfo.js", "monsterData")
-    output_js("items.json", "ItemInfo.js", "itemData")
+    output_js("monsters.json", "MonsterData.js", "monsterData")
+    output_js("items.json", "ItemData.js", "itemData")

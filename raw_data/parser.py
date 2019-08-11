@@ -232,21 +232,14 @@ def parse_monsters(filename="eon_enemies.html"):
     return monsters, list_to_dict(monsters, "name")
 
 
-def output_json(data, filename):
-    with open(filename, 'w') as fp:
-        json.dump(data, fp)
-
-
-def output_js(old_filename, new_filename, var_name):
+def output_js(data, filename, var_name):
     new_file_data = """
     var {variable} = {data};
     export default {variable};
     """
-    data = None
-    with open(old_filename, "r") as file_data:
-        data = file_data.read()
-    
-    with open(new_filename, 'w') as nf:
+    data = json.dumps(data)
+
+    with open(filename, 'w') as nf:
         nf.write(new_file_data.format(variable=var_name,
                                       data=data))
 
@@ -259,9 +252,5 @@ if __name__ == "__main__":
     item_data = parse_items(mn_data_dict)
 
     print("Outputting files...")
-    output_json(monster_data, "monsters.json")
-    output_json(item_data, "items.json")
-
-    print("Putting files as JS files")
-    output_js("monsters.json", "MonsterData.js", "monsterData")
-    output_js("items.json", "ItemData.js", "itemData")
+    output_js(monster_data, "MonsterData.js", "monsterData")
+    output_js(item_data, "ItemData.js", "itemData")

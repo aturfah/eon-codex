@@ -10,9 +10,12 @@ class ItemInfoPanel extends Component {
       if (!activeItem) {
           return (<p>Please select an item to continue.</p>)
       }
+
       let conditionalText = 'No';
+      let conditionalMethod = 'N/A';
       if (activeItem.conditional) {
         conditionalText = 'Yes';
+        conditionalMethod = activeItem.cond_method;
       }
 
       let takeChopMineText = 'No';
@@ -30,17 +33,18 @@ class ItemInfoPanel extends Component {
           locationText = capitalizeWords(activeItem.location);
       }
 
-        return (
-            <div>
-                <h1>{activeItem.name}</h1>
-                <p>Location: {locationText}</p>
-                <p>Price: {activeItem.price}en</p>
-                <p>Monster Source: {monsterSourceText}</p>
-                <p>Conditional: {conditionalText}</p>
-                <p>Take/Chop/Mine: {takeChopMineText}</p>
-                
-            </div>
-        )
+      return (
+          <div>
+              <h1>{activeItem.name}</h1>
+              <p>Location: {locationText}</p>
+              <p>Price: {activeItem.price}en</p>
+              <p>Monster Source: {monsterSourceText}</p>
+              <p>Conditional: {conditionalText}</p>
+              <p>Conditional Method: {conditionalMethod}</p>
+              <p>Take/Chop/Mine: {takeChopMineText}</p>
+              
+          </div>
+      )
   }
 
   render() {

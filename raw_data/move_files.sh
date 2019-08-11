@@ -1,3 +1,5 @@
+python3 parser.py
+
 if test -f "ItemData.js"; then
     mv ItemData.js ../src/ItemData.js;
 fi

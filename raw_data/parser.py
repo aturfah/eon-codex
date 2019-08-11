@@ -93,7 +93,7 @@ def generate_monster_data(bquote_node, monst_cat, monst_loc):
     monst_data = {
         "name": monst_name,
         "cat": monst_cat,
-        "loc": monst_loc_processed
+        "location": monst_loc_processed
     }
 
     return monst_data
@@ -166,7 +166,7 @@ def parse_item_source(item_info, monster_data):
         if not monst_data:
             raise RuntimeError("MONSTER DATA NOT FOUND: {}".format(monster_source))
 
-        item_loc = monst_data["loc"]
+        item_loc = monst_data["location"]
 
     conditional_drop_data = parse_conditional_drops()
     new_item["monster_source"] = monster_source
@@ -238,7 +238,10 @@ def output_json(data, filename):
 
 
 def output_js(old_filename, new_filename, var_name):
-    new_file_data = "var {variable} = {data}"
+    new_file_data = """
+    var {variable} = {data};
+    export default {variable};
+    """
     data = None
     with open(old_filename, "r") as file_data:
         data = file_data.read()

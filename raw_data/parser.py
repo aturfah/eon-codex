@@ -17,6 +17,9 @@ def list_to_dict(list_data, key, lower_flag=True):
         if lower_flag:
             out_key = out_key.lower()
 
+        if out_key in output:
+            raise RuntimeError("Duplicate key: {}".format(out_key))
+
         output[out_key] = val
 
     return output

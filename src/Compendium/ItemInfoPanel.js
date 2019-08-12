@@ -36,13 +36,12 @@ class ItemInfoPanel extends Component {
       return (
           <div>
               <h1>{activeItem.name}</h1>
-              <p>Location: {locationText}</p>
-              <p>Price: {activeItem.price}en</p>
-              <p>Monster Source: {monsterSourceText}</p>
-              <p>Conditional: {conditionalText}</p>
-              <p>Conditional Method: {conditionalMethod}</p>
-              <p>Take/Chop/Mine: {takeChopMineText}</p>
-              
+              <p><b>Location:</b> {locationText}</p>
+              <p><b>Price:</b> {activeItem.price}en</p>
+              <p><b>Monster Source:</b> {monsterSourceText}</p>
+              <p><b>Conditional:</b> {conditionalText}</p>
+              <p><b>Conditional Method:</b> {conditionalMethod}</p>
+              <p><b>Take/Chop/Mine:</b> {takeChopMineText}</p>
           </div>
       )
   }

@@ -25,6 +25,40 @@ def list_to_dict(list_data, key, lower_flag=True):
     return output
 
 
+def generate_monster_drops(monster_data, item_data):
+    output = []
+
+    # Generate which monsters drop which item
+    monster_item_drops = {}
+    for item in item_data:
+        monst_source = item.get("monster_source", None)
+        item_name = item.get("name", "DOOT DOOT")
+        conditional = item.get("conditional", False)
+
+        if not monst_source:
+            continue
+
+        if monst_source not in monster_item_drops:
+            monster_item_drops[monst_source] = {}
+
+        if item_name not in monster_item_drops[monst_source]:
+            monster_item_drops[monst_source][item_name] = {
+                "name": item_name,
+                "conditional": conditional
+            }
+
+    # Link those up to results
+    for monst_dat in monster_data:
+        new_dat = deepcopy(monst_dat)
+        drops = monster_item_drops.get(new_dat["name"].lower())
+        if drops:
+            new_dat["drops"] = drops
+
+        output.append(new_dat)
+
+    return output
+
+
 def generate_monster_data(bquote_node, monst_cat, monst_loc):
     monst_name = None
     for obj in bquote_node:
@@ -250,6 +284,9 @@ if __name__ == "__main__":
 
     print("Parsing item data...")
     item_data = parse_items(mn_data_dict)
+
+    print("Parsing monster drops...")
+    monster_data = generate_monster_drops(monster_data, item_data)
 
     print("Outputting files...")
     output_js(monster_data, "MonsterData.js", "monsterData")

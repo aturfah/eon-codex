@@ -21,3 +21,11 @@
   margin-bottom: 10px;
   max-height: 157px;
 }
+
+.FilterPanel a:link,
+.FilterPanel a:link,
+.FilterPanel a:hover,
+.FilterPanel a:visited {
+    text-decoration: none;
+    color: inherit;
+}

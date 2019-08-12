@@ -366,6 +366,7 @@ class FilterPanel extends Component {
                 fluid={true}
                 src={this.props.activeImage}
               />
+              <p>Github <i className="fab fa-github"></i></p>
             </a>
           </Col>
           <Col xs="12" md="3">

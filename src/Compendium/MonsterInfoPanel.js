@@ -4,7 +4,39 @@ import {capitalizeWords} from '../helpers';
 
 import Col from 'react-bootstrap/Col';
 
-class ItemInfoPanel extends Component {
+
+function renderDrops(activeItem) {
+  const drops = activeItem.drops
+  const dropsArr = []
+
+  // Build list of drops
+  if (drops === undefined) {
+    dropsArr.push(<i>None</i>)
+  } else {
+    Object.keys(drops).forEach(function (dropName) {
+      let newObj = null;
+      let displayText = dropName;
+
+      // Add comma if not last element of list
+      if (Object.keys(drops).indexOf(dropName) !== Object.keys(drops).length - 1) {
+        displayText = displayText + ', '
+      }
+
+      // Italicize conditional drops
+      if (drops[dropName].conditional) {
+        newObj = <i key={dropName}>{displayText}</i>
+      } else {
+        newObj = <span key={dropName}>{displayText}</span>
+      }
+
+      dropsArr.push(newObj);
+    });
+  }
+
+  return dropsArr
+}
+
+class MonsterInfoPanel extends Component {
 
   renderActive(activeItem) {
       if (!activeItem) {
@@ -20,13 +52,14 @@ class ItemInfoPanel extends Component {
           locationText = capitalizeWords(activeItem.location);
       }
 
-        return (
-            <div>
-                <h1>{activeItem.name}</h1>
-                <p>Location: {locationText}</p>
-                <p>Category: {categoryText}</p>
-            </div>
-        )
+      return (
+          <div>
+              <h1>{activeItem.name}</h1>
+              <p><b>Location:</b> {locationText}</p>
+              <p><b>Category:</b> {categoryText}</p>
+              <p><b>Drops</b>: {renderDrops(activeItem)}</p>
+          </div>
+      )
   }
 
   render() {
@@ -40,4 +73,4 @@ class ItemInfoPanel extends Component {
   }
 }
 
-export default ItemInfoPanel;
+export default MonsterInfoPanel;

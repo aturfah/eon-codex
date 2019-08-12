@@ -82,7 +82,7 @@ class App extends Component {
         false,
         /\.(png|jpe?g|svg)$/));
     var imageIndex = Math.floor(Math.random() * Object.keys(images).length);
-    this.activeImage = Object.keys(images)[imageIndex];
+    this.activeImage = images[Object.keys(images)[imageIndex]];
   }
 
   updateFilters(key, filterValue, clearFlag) {
@@ -112,8 +112,8 @@ class App extends Component {
         <FilterPanel
           updateFilters={this.updateFilters.bind(this)}
           locations={this.locations}
-          monsterTypes={this.monsterTypes}>
-          activeImage={this.activeImage}
+          monsterTypes={this.monsterTypes}
+          activeImage={this.activeImage}>
         </FilterPanel>
         <Compendium
           filters={this.state.filters}

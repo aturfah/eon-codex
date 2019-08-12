@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Image from 'react-bootstrap/Image';
 import './FilterPanel.css';
 import {isNumber} from '../helpers';
 
@@ -85,7 +86,7 @@ class FilterPanel extends Component {
         ref="locationDropdownSelect"
         title={'Location: ' + this.activeLocation}
         onSelect={this.locationDropdownSelect}
-        className="leftPadded"
+        className="leftPadded paddedButton"
         >
       {buttonLists}
     </DropdownButton>
@@ -359,7 +360,13 @@ class FilterPanel extends Component {
     return (
       <Container fluid={true} className="FilterPanel">
         <Row>
-          <Col xs="12" md="4">
+          <Col xs="12" md="2">
+            <Image className="HeaderImage"
+              fluid={true}
+              src={this.props.activeImage}
+            />
+          </Col>
+          <Col xs="12" md="3">
             <p>I am FilterPanel. Fear me.</p>
             <ButtonToolbar className="CenterToolbar paddedButton" >
               <ToggleButtonGroup type="radio" size="sm" name="ItemMonstOpts" defaultValue={1}>
@@ -379,11 +386,11 @@ class FilterPanel extends Component {
                     Monsters
                 </ToggleButton>
               </ToggleButtonGroup>
-              {locationDropdown}
             </ButtonToolbar>
+            {locationDropdown}
             {nameFilter}
           </Col>
-          <Col xs="12" md="8" hidden={!itemFiltersVisible}>
+          <Col xs="12" md="7" hidden={!itemFiltersVisible}>
               I am Items FilterPanel. Hate me.
             <ButtonToolbar className="CenterToolbar paddedButton">
                 {condItemDropdown}

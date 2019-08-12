@@ -1,7 +1,6 @@
 .FilterPanel {
     color: #c6ffec;
     background-color: #18549b;
-    _height: 15%;
   }
 
 .CenterToolbar {
@@ -15,4 +14,10 @@
 
 .leftPadded {
     margin-left: 10px;
+}
+
+.HeaderImage {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  max-height: 157px;
 }

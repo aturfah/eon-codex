@@ -361,10 +361,12 @@ class FilterPanel extends Component {
       <Container fluid={true} className="FilterPanel">
         <Row>
           <Col xs="12" md="2">
-            <Image className="HeaderImage"
-              fluid={true}
-              src={this.props.activeImage}
-            />
+            <a href="https://github.com/aturfah/eon-codex">
+              <Image className="HeaderImage"
+                fluid={true}
+                src={this.props.activeImage}
+              />
+            </a>
           </Col>
           <Col xs="12" md="3">
             <p>I am FilterPanel. Fear me.</p>

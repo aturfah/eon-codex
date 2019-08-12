@@ -4,7 +4,7 @@ import FilterPanel from './FilterPanel/FilterPanel';
 import Compendium from './Compendium/Compendium';
 import itemData from './ItemData';
 import monsterData from './MonsterData';
-import {capitalizeWords} from './helpers'
+import {capitalizeWords, importAll} from './helpers'
 
 function defaultState() {
   return {
@@ -76,6 +76,13 @@ class App extends Component {
     this.state = defaultState();
     this.locations = getLocations();
     this.monsterTypes = getMonsterTypes();
+
+    // Get image
+    var images = importAll(require.context('./img',
+        false,
+        /\.(png|jpe?g|svg)$/));
+    var imageIndex = Math.floor(Math.random() * Object.keys(images).length);
+    this.activeImage = Object.keys(images)[imageIndex];
   }
 
   updateFilters(key, filterValue, clearFlag) {
@@ -106,6 +113,7 @@ class App extends Component {
           updateFilters={this.updateFilters.bind(this)}
           locations={this.locations}
           monsterTypes={this.monsterTypes}>
+          activeImage={this.activeImage}
         </FilterPanel>
         <Compendium
           filters={this.state.filters}

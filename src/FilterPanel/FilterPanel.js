@@ -402,7 +402,7 @@ class FilterPanel extends Component {
             {costFilter}
             {monsterSourceTextField}
           </Col>
-          <Col xs="12" md="8" hidden={itemFiltersVisible}>
+          <Col xs="12" md="7" hidden={itemFiltersVisible}>
               I am Monsters FilterPanel. Love me.
             {monsterTypeDropdown}
           </Col>

@@ -247,8 +247,8 @@ def generate_monster_data(bquote_node, monst_cat, monst_loc):
         "cat": monst_cat,
         "location": monst_loc_processed,
         "basicStats": basic_stats,
-        "damageMod": dmg_vul,
-        "ailmentMod": ail_vul
+        "damageVul": dmg_vul,
+        "ailmentVul": ail_vul
     }
 
     return monst_data

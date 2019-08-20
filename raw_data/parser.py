@@ -26,8 +26,26 @@ def list_to_dict(list_data, key, lower_flag=True):
 
 
 def generate_monster_damage_vulnerability(table_node):
-    raise RuntimeError("DOOT")
-    return 8
+    output = {}
+    tr_counter = 0
+    cols = []
+    for trow in table_node.find("tbody"):
+        col_counter = 0
+        for col in trow:
+            if tr_counter in (0, 2, 4):
+                # Add to columns
+                cols.append(col.text)
+            elif tr_counter in (1, 3, 5):
+                # Set output value for the chosen column header
+                output[cols[col_counter]] = int(col.text.replace("%", ""))
+            col_counter += 1
+
+        # Reset columns every time we update output
+        if tr_counter in (1, 3, 5):
+            cols = []
+        tr_counter += 1
+
+    return output
 
 
 def generate_monster_drops(monster_data, item_data):
@@ -90,7 +108,6 @@ def generate_monster_data(bquote_node, monst_cat, monst_loc):
 
             next_datum = None
         else:
-            print("\t{}".format(obj.tag))
             continue
 
     # Manually map bosses to non-world-map locations

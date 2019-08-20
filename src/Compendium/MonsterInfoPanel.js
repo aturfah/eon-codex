@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import {capitalizeWords, formatVulnerability} from '../helpers';
 
 import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 
 
 function renderDrops(activeItem) {
@@ -43,41 +44,22 @@ function renderDmgVulnerability(activeItem) {
     return <p>Doot</p>
   }
 
-  return <table className="table">
-    <thead>
-      <tr>
-        <th colSpan="3"><h4>Damage Vulnerability</h4></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th>Cut</th>
-        <th>Stab</th>
-        <th>Bash</th>
-      </tr>
-      <tr>
-        <td>{formatVulnerability(dmgVulData.Cut)}</td>
-        <td>{formatVulnerability(dmgVulData.Stab)}</td>
-        <td>{formatVulnerability(dmgVulData.Bash)}</td>
-      </tr>
-      <tr>
-        <th>Fire</th>
-        <th>Ice</th>
-        <th>Volt</th>
-      </tr>
-      <tr>
-        <td>{formatVulnerability(dmgVulData.Fire)}</td>
-        <td>{formatVulnerability(dmgVulData.Ice)}</td>
-        <td>{formatVulnerability(dmgVulData.Volt)}</td>
-      </tr>
-      <tr>
-        <th colSpan="3">Almighty</th>
-      </tr>
-      <tr>
-        <td colSpan="3">{formatVulnerability(dmgVulData.Almighty)}</td>
-      </tr>
-    </tbody>
-  </table>
+  return <ul><b>Damage Vulnerability:</b>
+    <Row>
+      <Col xs="3"></Col>
+      <Col xs="3">
+        <li>Cut: {formatVulnerability(dmgVulData.Cut)}</li>
+        <li>Stab: {formatVulnerability(dmgVulData.Stab)}</li>
+        <li>Bash: {formatVulnerability(dmgVulData.Bash)}</li>
+        <li>Almighty: {formatVulnerability(dmgVulData.Almighty)}</li>
+      </Col>
+      <Col xs="3">
+        <li>Fire: {formatVulnerability(dmgVulData.Fire)}</li>
+        <li>Ice: {formatVulnerability(dmgVulData.Ice)}</li>
+        <li>Volt: {formatVulnerability(dmgVulData.Volt)}</li>
+      </Col>
+    </Row>
+  </ul>
 }
 
 

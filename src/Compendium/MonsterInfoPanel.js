@@ -66,15 +66,15 @@ function renderDmgVulnerability(activeItem) {
         <th>Volt</th>
       </tr>
       <tr>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td>{formatVulnerability(dmgVulData.Fire)}</td>
+        <td>{formatVulnerability(dmgVulData.Ice)}</td>
+        <td>{formatVulnerability(dmgVulData.Volt)}</td>
       </tr>
       <tr>
         <th colSpan="3">Almighty</th>
       </tr>
       <tr>
-        <td colSpan="3"></td>
+        <td colSpan="3">{formatVulnerability(dmgVulData.Almighty)}</td>
       </tr>
     </tbody>
   </table>

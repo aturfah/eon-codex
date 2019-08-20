@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "dbac554815b179507dfabbdebd846ec5",
+    "revision": "b4c2ce1a90627d6d9bf581189a6817a2",
     "url": "/eon-codex/index.html"
   },
   {
-    "revision": "9c489fc1b28c80b6a464",
-    "url": "/eon-codex/static/css/main.d70850fc.chunk.css"
+    "revision": "2872a5e729b58f9b29c8",
+    "url": "/eon-codex/static/css/main.f2bbf368.chunk.css"
   },
   {
-    "revision": "1b0f30d5ae9251b09f02",
-    "url": "/eon-codex/static/js/2.c7ed6ee2.chunk.js"
+    "revision": "a66d9b10eb6090ccc6b9",
+    "url": "/eon-codex/static/js/2.d1667298.chunk.js"
   },
   {
-    "revision": "9c489fc1b28c80b6a464",
-    "url": "/eon-codex/static/js/main.60ca599a.chunk.js"
+    "revision": "2872a5e729b58f9b29c8",
+    "url": "/eon-codex/static/js/main.69f8ae8e.chunk.js"
   },
   {
     "revision": "070077a074cc58a60504",

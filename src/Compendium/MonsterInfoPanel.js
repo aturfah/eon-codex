@@ -47,13 +47,13 @@ function renderDmgVulnerability(activeItem) {
   return <ul><b>Damage Vulnerability:</b>
     <Row>
       <Col xs="3"></Col>
-      <Col xs="3">
+      <Col xs="12" md="3">
         <li>Cut: {formatVulnerability(dmgVulData.Cut)}</li>
         <li>Stab: {formatVulnerability(dmgVulData.Stab)}</li>
         <li>Bash: {formatVulnerability(dmgVulData.Bash)}</li>
         <li>Almighty: {formatVulnerability(dmgVulData.Almighty)}</li>
       </Col>
-      <Col xs="3">
+      <Col xs="12" md="3">
         <li>Fire: {formatVulnerability(dmgVulData.Fire)}</li>
         <li>Ice: {formatVulnerability(dmgVulData.Ice)}</li>
         <li>Volt: {formatVulnerability(dmgVulData.Volt)}</li>
@@ -71,7 +71,7 @@ function renderAilmentVulnerability(activeItem) {
   return <ul><b>Bind/Ailment Vulnerability:</b>
     <Row>
       <Col xs="3"></Col>
-      <Col xs="3">
+      <Col xs="12" md="3">
         <li type="square">Stun: {formatVulnerability(ailVulData.Stun)}</li>
         <li type="square">Instant Death: {formatVulnerability(ailVulData['Instant Death'])}</li>
         <li>Blind: {formatVulnerability(ailVulData.Blind)}</li>
@@ -79,7 +79,7 @@ function renderAilmentVulnerability(activeItem) {
         <li>Paralysis: {formatVulnerability(ailVulData.Paralysis)}</li>
         <li>Panic: {formatVulnerability(ailVulData.Panic)}</li>
       </Col>
-      <Col xs="3">
+      <Col xs="12" md="3">
       <li>Sleep: {formatVulnerability(ailVulData.Sleep)}</li>
         <li>Curse: {formatVulnerability(ailVulData.Curse)}</li>
         <li>Petrification: {formatVulnerability(ailVulData.Petrification)}</li>

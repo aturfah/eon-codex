@@ -33,10 +33,10 @@ export function importAll(r) {
 
   export function formatVulnerability(number) {
       if (number < 100) {
-          return <span className="RedNumber">{number}</span>
+          return <span className="RedNumber">{number}%</span>
       } else if (number > 100) {
-          return <span className="GreenNumber">{number}</span>
+          return <span className="GreenNumber">{number}%</span>
       } else {
-          return <span>{number}</span>
+          return <span>{number}%</span>
       }
   }

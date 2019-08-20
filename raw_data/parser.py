@@ -25,7 +25,7 @@ def list_to_dict(list_data, key, lower_flag=True):
     return output
 
 
-def generate_monster_vulnerability(table_node):
+def generate_monster_tables(table_node):
     """
     Sample Damage Table:
         <table class="ffaq">
@@ -175,11 +175,11 @@ def generate_monster_data(bquote_node, monst_cat, monst_loc):
         elif next_datum and obj.tag == 'table':
             print("FOUND TABLE: {}".format(next_datum))
             if "stats" in next_datum:
-                basic_stats = generate_monster_vulnerability(obj)
+                basic_stats = generate_monster_tables(obj)
             elif "damage" in next_datum:
-                dmg_vul = generate_monster_vulnerability(obj)
+                dmg_vul = generate_monster_tables(obj)
             elif "disable" in next_datum:
-                ail_vul = generate_monster_vulnerability(obj)
+                ail_vul = generate_monster_tables(obj)
 
             next_datum = None
         else:

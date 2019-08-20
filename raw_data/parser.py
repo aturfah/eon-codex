@@ -27,7 +27,7 @@ def list_to_dict(list_data, key, lower_flag=True):
 
 def generate_monster_tables(table_node):
     """
-    Sample Damage Table:
+    Sample Damage Vulnerability Table:
         <table class="ffaq">
             <tbody>
                 <tr>
@@ -59,7 +59,7 @@ def generate_monster_tables(table_node):
             </tbody>
         </table>
     
-    Sample Vulnerability Table:
+    Sample Ailment Vulnerability Table:
         <table class="ffaq">
             <tbody>
                 <tr>
@@ -100,6 +100,37 @@ def generate_monster_tables(table_node):
                 </tr>
             </tbody>
         </table>
+    
+    Sample Basic Stats Table:
+        <table class="ffaq">
+            <tbody>
+                <tr>
+                    <th style="text-align: center;" colspan="3">Level</th>
+                    <th style="text-align: center;" colspan="3">HP</th>
+                </tr>
+                <tr>
+                    <td style="text-align: center;" colspan="3">3</td>
+                    <td style="text-align: center;" colspan="3">113</td>
+                </tr>
+                <tr>
+                    <th>STR</th>
+                    <th>INT</th>
+                    <th>VIT</th>
+                    <th>WIS</th>
+                    <th>AGI</th>
+                    <th>LUC</th>
+                </tr>
+                <tr>
+                    <td style="text-align: center;" colspan="">19</td>
+                    <td style="text-align: center;" colspan="">14</td>
+                    <td style="text-align: center;" colspan="">14</td>
+                    <td style="text-align: center;" colspan="">12</td>
+                    <td style="text-align: center;" colspan="">9</td>
+                    <td style="text-align: center;" colspan="">15</td>
+                </tr>
+            </tbody>
+        </table>
+
     """
     output = {}
     tr_counter = 0

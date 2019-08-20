@@ -25,7 +25,7 @@ def list_to_dict(list_data, key, lower_flag=True):
     return output
 
 
-def generate_monster_damage_mods():
+def generate_monster_damage_vulnerability(table_node):
     raise RuntimeError("DOOT")
     return 8
 
@@ -66,7 +66,9 @@ def generate_monster_drops(monster_data, item_data):
 
 def generate_monster_data(bquote_node, monst_cat, monst_loc):
     monst_name = None
-    dmg_mods = None
+    basic_stats = None
+    dmg_vul = None
+    ail_vul = None
     next_datum = None
     for obj in bquote_node:
         if obj.tag == "strong":
@@ -79,6 +81,13 @@ def generate_monster_data(bquote_node, monst_cat, monst_loc):
                 break
         elif next_datum and obj.tag == 'table':
             print("FOUND TABLE: {}".format(next_datum))
+            if "stats" in next_datum:
+                continue
+            elif "damage" in next_datum:
+                dmg_vul = generate_monster_damage_vulnerability(obj)
+            elif "disable" in next_datum:
+                continue
+
             next_datum = None
         else:
             print("\t{}".format(obj.tag))
@@ -144,7 +153,10 @@ def generate_monster_data(bquote_node, monst_cat, monst_loc):
     monst_data = {
         "name": monst_name,
         "cat": monst_cat,
-        "location": monst_loc_processed
+        "location": monst_loc_processed,
+        "basicStats": basic_stats,
+        "damageMod": dmg_vul,
+        "ailmentMod": ail_vul
     }
 
     return monst_data

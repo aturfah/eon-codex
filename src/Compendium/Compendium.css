@@ -16,3 +16,11 @@ table {
 table, th, td {
     color: #034079;
 }
+
+.RedNumber {
+    color: red;
+}
+
+.GreenNumber {
+    color: green;
+}

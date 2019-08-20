@@ -1,3 +1,5 @@
+import React from 'react';
+
 function capitalizeFirst(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
@@ -27,4 +29,14 @@ export function importAll(r) {
       images[item.replace('./', '')] = r(item);
     });
     return images;
+  }
+
+  export function formatVulnerability(number) {
+      if (number < 100) {
+          return <span className="RedNumber">{number}</span>
+      } else if (number > 100) {
+          return <span className="GreenNumber">{number}</span>
+      } else {
+          return <span>{number}</span>
+      }
   }

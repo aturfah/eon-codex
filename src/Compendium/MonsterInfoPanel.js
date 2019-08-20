@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import {capitalizeWords} from '../helpers';
+import {capitalizeWords, formatVulnerability} from '../helpers';
 
 import Col from 'react-bootstrap/Col';
 
@@ -56,9 +56,9 @@ function renderDmgVulnerability(activeItem) {
         <th>Bash</th>
       </tr>
       <tr>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td>{formatVulnerability(dmgVulData.Cut)}</td>
+        <td>{formatVulnerability(dmgVulData.Stab)}</td>
+        <td>{formatVulnerability(dmgVulData.Bash)}</td>
       </tr>
       <tr>
         <th>Fire</th>

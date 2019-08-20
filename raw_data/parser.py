@@ -175,7 +175,7 @@ def generate_monster_data(bquote_node, monst_cat, monst_loc):
         elif next_datum and obj.tag == 'table':
             print("FOUND TABLE: {}".format(next_datum))
             if "stats" in next_datum:
-                continue
+                basic_stats = generate_monster_vulnerability(obj)
             elif "damage" in next_datum:
                 dmg_vul = generate_monster_vulnerability(obj)
             elif "disable" in next_datum:

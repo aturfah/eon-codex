@@ -173,7 +173,6 @@ def generate_monster_data(bquote_node, monst_cat, monst_loc):
                 next_datum = sub_obj.text.strip().lower()
                 break
         elif next_datum and obj.tag == 'table':
-            print("FOUND TABLE: {}".format(next_datum))
             if "stats" in next_datum:
                 basic_stats = generate_monster_tables(obj)
             elif "damage" in next_datum:

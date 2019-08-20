@@ -26,6 +26,39 @@ def list_to_dict(list_data, key, lower_flag=True):
 
 
 def generate_monster_damage_vulnerability(table_node):
+    """
+    Sample Table:
+        <table class="ffaq">
+            <tbody>
+                <tr>
+                    <th>Cut</th>
+                    <th>Stab</th>
+                    <th>Bash</th>
+                </tr>
+                <tr>
+                    <td style="text-align: center;" colspan="">100%</td>
+                    <td style="text-align: center;" colspan="">100%</td>
+                    <td style="text-align: center;" colspan="">100%</td>
+                </tr>
+                <tr>
+                    <th>Fire</th>
+                    <th>Ice</th>
+                    <th>Volt</th>
+                </tr>
+                <tr>
+                    <td style="text-align: center;" colspan="">100%</td>
+                    <td style="text-align: center;" colspan="">150%</td>
+                    <td style="text-align: center;" colspan="">100%</td>
+                </tr>
+                <tr>
+                    <th style="text-align: center;" colspan="3">Almighty</th>
+                </tr>
+                <tr>
+                    <td style="text-align: center;" colspan="3">100%</td>
+                </tr>
+            </tbody>
+        </table>
+    """
     output = {}
     tr_counter = 0
     cols = []

@@ -41,7 +41,7 @@ function renderDrops(activeItem) {
 function renderDmgVulnerability(activeItem) {
   const dmgVulData = activeItem.damageVul;
   if (!dmgVulData) {
-    return <p>Doot</p>
+    return <p>Doot Damage</p>
   }
 
   return <ul><b>Damage Vulnerability:</b>
@@ -65,10 +65,8 @@ function renderDmgVulnerability(activeItem) {
 function renderAilmentVulnerability(activeItem) {
   const ailVulData = activeItem.ailmentVul;
   if (!ailVulData) {
-    return <p>Doot</p>
+    return <p>Doot Ailment</p>
   }
-
-  console.log(ailVulData)
 
   return <ul><b>Bind/Ailment Vulnerability:</b>
     <Row>

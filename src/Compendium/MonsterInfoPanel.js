@@ -36,6 +36,51 @@ function renderDrops(activeItem) {
   return dropsArr
 }
 
+
+function renderDmgVulnerability(activeItem) {
+  const dmgVulData = activeItem.damageVul;
+  if (!dmgVulData) {
+    return <p>Doot</p>
+  }
+
+  return <table className="table">
+    <thead>
+      <tr>
+        <th colSpan="3"><h4>Damage Vulnerability</h4></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>Cut</th>
+        <th>Stab</th>
+        <th>Bash</th>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th>Fire</th>
+        <th>Ice</th>
+        <th>Volt</th>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th colSpan="3">Almighty</th>
+      </tr>
+      <tr>
+        <td colSpan="3"></td>
+      </tr>
+    </tbody>
+  </table>
+}
+
+
 class MonsterInfoPanel extends Component {
 
   renderActive(activeItem) {
@@ -58,6 +103,7 @@ class MonsterInfoPanel extends Component {
               <p><b>Location:</b> {locationText}</p>
               <p><b>Category:</b> {categoryText}</p>
               <p><b>Drops</b>: {renderDrops(activeItem)}</p>
+              {renderDmgVulnerability(activeItem)}
           </div>
       )
   }

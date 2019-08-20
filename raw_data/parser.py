@@ -25,9 +25,9 @@ def list_to_dict(list_data, key, lower_flag=True):
     return output
 
 
-def generate_monster_damage_vulnerability(table_node):
+def generate_monster_vulnerability(table_node):
     """
-    Sample Table:
+    Sample Damage Table:
         <table class="ffaq">
             <tbody>
                 <tr>
@@ -55,6 +55,48 @@ def generate_monster_damage_vulnerability(table_node):
                 </tr>
                 <tr>
                     <td style="text-align: center;" colspan="3">100%</td>
+                </tr>
+            </tbody>
+        </table>
+    
+    Sample Vulnerability Table:
+        <table class="ffaq">
+            <tbody>
+                <tr>
+                    <th>Blind</th>
+                    <th>Poison</th>
+                    <th>Paralysis</th>
+                    <th>Panic</th>
+                    <th>Sleep</th>
+                    <th>Curse</th>
+                    <th>Petrification</th>
+                </tr>
+                <tr>
+                    <td style="text-align: center;" colspan="">100%</td>
+                    <td style="text-align: center;" colspan="">150%</td>
+                    <td style="text-align: center;" colspan="">100%</td>
+                    <td style="text-align: center;" colspan="">100%</td>
+                    <td style="text-align: center;" colspan="">100%</td>
+                    <td style="text-align: center;" colspan="">100%</td>
+                    <td style="text-align: center;" colspan="">100%</td>
+                </tr>
+                <tr>
+                    <th style="text-align: center;" colspan="4">Instant Death</th>
+                    <th style="text-align: center;" colspan="3">Stun</th>
+                </tr>
+                <tr>
+                    <td style="text-align: center;" colspan="4">100%</td>
+                    <td style="text-align: center;" colspan="3">100%</td>
+                </tr>
+                <tr>
+                    <th style="text-align: center;" colspan="2">Head Bind</th>
+                    <th style="text-align: center;" colspan="3">Arm Bind</th>
+                    <th style="text-align: center;" colspan="2">Leg Bind</th>
+                </tr>
+                <tr>
+                    <td style="text-align: center;" colspan="2">100%</td>
+                    <td style="text-align: center;" colspan="3">150%</td>
+                    <td style="text-align: center;" colspan="2">100%</td>
                 </tr>
             </tbody>
         </table>
@@ -135,9 +177,9 @@ def generate_monster_data(bquote_node, monst_cat, monst_loc):
             if "stats" in next_datum:
                 continue
             elif "damage" in next_datum:
-                dmg_vul = generate_monster_damage_vulnerability(obj)
+                dmg_vul = generate_monster_vulnerability(obj)
             elif "disable" in next_datum:
-                continue
+                ail_vul = generate_monster_vulnerability(obj)
 
             next_datum = None
         else:

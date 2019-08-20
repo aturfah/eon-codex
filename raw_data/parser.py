@@ -25,6 +25,11 @@ def list_to_dict(list_data, key, lower_flag=True):
     return output
 
 
+def generate_monster_damage_mods():
+    raise RuntimeError("DOOT")
+    return 8
+
+
 def generate_monster_drops(monster_data, item_data):
     output = []
 
@@ -61,10 +66,22 @@ def generate_monster_drops(monster_data, item_data):
 
 def generate_monster_data(bquote_node, monst_cat, monst_loc):
     monst_name = None
+    dmg_mods = None
+    next_datum = None
     for obj in bquote_node:
         if obj.tag == "strong":
             monst_name = obj.text.strip()
+            print(monst_name)
+        elif obj.tag == 'p':
+            # Check what next datum is going to be
+            for sub_obj in obj:
+                next_datum = sub_obj.text.strip().lower()
+                break
+        elif next_datum and obj.tag == 'table':
+            print("FOUND TABLE: {}".format(next_datum))
+            next_datum = None
         else:
+            print("\t{}".format(obj.tag))
             continue
 
     # Manually map bosses to non-world-map locations

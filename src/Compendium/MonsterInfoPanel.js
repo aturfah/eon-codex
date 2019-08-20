@@ -62,6 +62,37 @@ function renderDmgVulnerability(activeItem) {
   </ul>
 }
 
+function renderAilmentVulnerability(activeItem) {
+  const ailVulData = activeItem.ailmentVul;
+  if (!ailVulData) {
+    return <p>Doot</p>
+  }
+
+  console.log(ailVulData)
+
+  return <ul><b>Bind/Ailment Vulnerability:</b>
+    <Row>
+      <Col xs="3"></Col>
+      <Col xs="3">
+        <li type="square">Stun: {formatVulnerability(ailVulData.Stun)}</li>
+        <li type="square">Instant Death: {formatVulnerability(ailVulData['Instant Death'])}</li>
+        <li>Blind: {formatVulnerability(ailVulData.Blind)}</li>
+        <li>Poison: {formatVulnerability(ailVulData.Poison)}</li>
+        <li>Paralysis: {formatVulnerability(ailVulData.Paralysis)}</li>
+        <li>Panic: {formatVulnerability(ailVulData.Panic)}</li>
+      </Col>
+      <Col xs="3">
+      <li>Sleep: {formatVulnerability(ailVulData.Sleep)}</li>
+        <li>Curse: {formatVulnerability(ailVulData.Curse)}</li>
+        <li>Petrification: {formatVulnerability(ailVulData.Petrification)}</li>
+        <li type="circle">Head Bind: {formatVulnerability(ailVulData['Head Bind'])}</li>
+        <li type="circle">Arm Bind: {formatVulnerability(ailVulData['Arm Bind'])}</li>
+        <li type="circle">Leg Bind: {formatVulnerability(ailVulData['Leg Bind'])}</li>
+      </Col>
+    </Row>
+  </ul>
+}
+
 
 class MonsterInfoPanel extends Component {
 
@@ -86,6 +117,7 @@ class MonsterInfoPanel extends Component {
               <p><b>Category:</b> {categoryText}</p>
               <p><b>Drops</b>: {renderDrops(activeItem)}</p>
               {renderDmgVulnerability(activeItem)}
+              {renderAilmentVulnerability(activeItem)}
           </div>
       )
   }

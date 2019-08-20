@@ -148,7 +148,7 @@ class Compendium extends Component {
             key={val.name + '|' + val.monster_source}
             onClick={() => updateFunc(val)}
             >
-            Name: {val.name}
+            <b>Name:</b> {val.name}
         </p>);
     });
 

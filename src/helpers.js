@@ -49,8 +49,18 @@ export function buildVulnerabilityButtons(btnName, toggleCallback, status) {
   console.log(status);
 
   return <ButtonToolbar className="CenterToolbar paddedButton" >
-    <ToggleButtonGroup type="radio" size="sm" ref={btnGroupName} name={btnGroupName} defaultValue={2}>
+    <ToggleButtonGroup type="radio" size="sm" ref={btnGroupName} name={btnGroupName} defaultValue={0}>
+    <ToggleButton
+        size="sm"
+        onClick={toggleCallback}
+        value={0}
+        ref={'<>NA'.replace('<>', btnName)}
+        //variant={itemButtonVariant}
+      >
+        N/A
+      </ToggleButton>
       <ToggleButton
+        size="sm"
         onClick={toggleCallback}
         value={1}
         ref={'<>Weak'.replace('<>', btnName)}

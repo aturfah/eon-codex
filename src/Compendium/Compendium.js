@@ -128,7 +128,7 @@ class Compendium extends Component {
                 let result = false;
                 Object.keys(datum.drops).forEach(function (dropKey) {
                     const dropName = datum.drops[dropKey].name.toLowerCase();
-                    if (dropName === filters.monsterItemDrop) {
+                    if (dropName.includes(filters.monsterItemDrop)) {
                         result = true;
                     }
                 });

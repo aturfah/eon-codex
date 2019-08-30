@@ -25,7 +25,7 @@ class FilterPanel extends Component {
   constructor(props) {
     super(props);
     this.itemFlag = true;
-    this.dmgVulnerabilityNames = ['Cut', 'Stab', 'Bash', 'Fire', 'Ice', 'Volt', 'Almighty'];
+    this.dmgVulnerabilityNames = ['Cut', 'Stab', 'Bash', 'Fire', 'Ice', 'Volt'];
     this.resetFlags();
 
     this._toggleItemFlag = this._toggleItemFlag.bind(this);
@@ -357,11 +357,7 @@ class FilterPanel extends Component {
     const clickToggle = this.monsterDmgVulnerabilityToggle;
     const status = this.dmgVulnerability;
     this.dmgVulnerabilityNames.forEach(function (name) {
-      let width = 6;
-      if (name === 'Almighty') {
-        width = 12;
-      }
-      columns.push(<Col xs={width}>
+      columns.push(<Col xs={6} sm={4} key={name}>
         {buildVulnerabilityButtons(name, clickToggle, status)}
       </Col>)
     });
@@ -372,7 +368,6 @@ class FilterPanel extends Component {
   }
 
   monsterDmgVulnerabilityToggle() {
-    console.log("SOMETHING GOT TOGGLED!!!!");
     const chosenDmgVulnerabilities = {};
     const objRefs = this.refs;
     this.dmgVulnerabilityNames.forEach(function (dmgName) {

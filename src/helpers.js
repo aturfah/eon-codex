@@ -55,7 +55,7 @@ export function buildVulnerabilityButtons(btnName, toggleCallback, status) {
         value={0}
         ref={'<>NA'.replace('<>', btnName)}
       >
-        N/A
+        {btnName} N/A
       </ToggleButton>
       <ToggleButton
         size="sm"
@@ -63,7 +63,7 @@ export function buildVulnerabilityButtons(btnName, toggleCallback, status) {
         value={1}
         ref={'<>Weak'.replace('<>', btnName)}
       >
-        {btnName} Weak
+        Weak
       </ToggleButton>
       <ToggleButton
         size="sm"
@@ -71,7 +71,7 @@ export function buildVulnerabilityButtons(btnName, toggleCallback, status) {
         value={2}
         ref={'<>Neu'.replace('<>', btnName)}
       >
-        {btnName} Neu.
+        Neu.
       </ToggleButton>
       <ToggleButton
         size="sm"
@@ -79,7 +79,7 @@ export function buildVulnerabilityButtons(btnName, toggleCallback, status) {
         value={3}
         ref={'<>Res'.replace('<>', btnName)}
       >
-        {btnName} Res.
+        Res.
       </ToggleButton>
     </ToggleButtonGroup>
   </ButtonToolbar>

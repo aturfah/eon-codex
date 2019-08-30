@@ -355,12 +355,10 @@ class FilterPanel extends Component {
     const clickToggle = this.monsterDmgVulnerabilityToggle;
     ['Cut', 'Stab', 'Bash', 'Fire', 'Ice', 'Volt', 'Almighty'].forEach(function (name) {
       let width = 6;
-      if (name == 'Almighty') {
+      if (name === 'Almighty') {
         width = 12;
       }
-      columns.push(<Col xs={width}
-        ref="doot"
-      >
+      columns.push(<Col xs={width}>
         {buildVulnerabilityButtons(name, clickToggle)}
       </Col>)
     });
@@ -371,7 +369,8 @@ class FilterPanel extends Component {
   }
 
   monsterDmgVulnerabilityToggle() {
-    console.log("SOMETHING GOT TOGGLED!!!!")
+    console.log("SOMETHING GOT TOGGLED!!!!");
+    
   }
 
   /**

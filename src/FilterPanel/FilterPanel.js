@@ -348,6 +348,25 @@ class FilterPanel extends Component {
     }
   }
 
+  buildMonsterDmgVulnerabilityButtons() {
+    const columns = [];
+    ['Cut', 'Stab', 'Bash', 'Fire', 'Ice', 'Volt', 'Almighty'].forEach(function (name) {
+      let width = 3;
+      if (['Cut', 'Stab', 'Bash'].includes(name)) {
+        width = 4
+      }
+      columns.push(<Col xs={width}
+        ref="doot"
+      >
+        {name}
+      </Col>)
+    });
+
+    return (<Row>
+      {columns}
+    </Row>)
+  }
+
   /**
    * Renders this React class
    * @return {div} Rendered dropdown button
@@ -375,6 +394,7 @@ class FilterPanel extends Component {
     const monsterTypeDropdown = this.buildMonsterTypeDropdown();
     const costFilter = this.buildCostFilter()
     const monsterItemDropField = this.buildMonsterDropFilter()
+    const monstDmgVulnerabilityBtns = this.buildMonsterDmgVulnerabilityButtons();
 
     return (
       <Container fluid={true} className="FilterPanel">
@@ -425,6 +445,7 @@ class FilterPanel extends Component {
             I am Monsters FilterPanel. Love me.
             {monsterTypeDropdown}
             {monsterItemDropField}
+            {monstDmgVulnerabilityBtns}
           </Col>
         </Row>
       </Container>

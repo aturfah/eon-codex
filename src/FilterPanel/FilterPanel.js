@@ -36,6 +36,7 @@ class FilterPanel extends Component {
     this.gatherPointDropdownSelect = this.gatherPointDropdownSelect.bind(this);
     this.minCostFilterType = this.minCostFilterType.bind(this);
     this.maxCostFilterType = this.maxCostFilterType.bind(this);
+    this.monsterDropFilterType = this.monsterDropFilterType.bind(this);
     this.toggleItemFlagOn();
   }
 
@@ -48,6 +49,7 @@ class FilterPanel extends Component {
     this.gatherPointFlag = '(N/A)';
     this.minCostFilter = '';
     this.maxCostFilter = '';
+    this.monsterDrop = '';
   }
 
   _toggleItemFlag(itemFlag) {
@@ -308,7 +310,6 @@ class FilterPanel extends Component {
     const textbox = this.refs.minCostFilter;
     if(isNumber(textbox.value)) {
         this.minCostFilter = textbox.value;
-        console.log("MIN FILTER TYPE", this.minCostFilter);
         if (this.minCostFilter) {
             this.props.updateFilters('minCost', this.minCostFilter);
         } else {
@@ -321,13 +322,30 @@ class FilterPanel extends Component {
     const textbox = this.refs.maxCostFilter;
     if(isNumber(textbox.value)) {
         this.maxCostFilter = textbox.value;
-        console.log("MAX FILTER TYPE", this.maxCostFilter);
         if (this.maxCostFilter) {
             this.props.updateFilters('maxCost', this.maxCostFilter);
         } else {
             this.props.updateFilters('maxCost', null);
         }
     }
+  }
+
+  buildMonsterDropFilter() {
+    return <FormControl
+        ref="monsterDropFilter"
+        placeholder="Monster Item Drop"
+        value={this.monsterDrop}
+        aria-label="Monster Item Drop"
+        onChange={this.monsterDropFilterType}
+        />
+  }
+
+  monsterDropFilterType() {
+      const textbox = this.refs.monsterDropFilter;
+      if (textbox.value.trim() !== '' || textbox.value === '') {
+          this.monsterDrop = textbox.value.trim()
+          this.props.updateFilters('monsterDrop', this.monsterDrop)
+      }
   }
 
   /**
@@ -356,6 +374,7 @@ class FilterPanel extends Component {
     const monsterSourceTextField = this.buildMonsterSourceFilter()
     const monsterTypeDropdown = this.buildMonsterTypeDropdown();
     const costFilter = this.buildCostFilter()
+    const monsterItemDropField = this.buildMonsterDropFilter()
 
     return (
       <Container fluid={true} className="FilterPanel">
@@ -405,6 +424,7 @@ class FilterPanel extends Component {
           <Col xs="12" md="7" hidden={itemFiltersVisible}>
               I am Monsters FilterPanel. Love me.
             {monsterTypeDropdown}
+            {monsterItemDropField}
           </Col>
         </Row>
       </Container>

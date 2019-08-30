@@ -46,7 +46,6 @@ export function formatVulnerability(number) {
 
 export function buildVulnerabilityButtons(btnName, toggleCallback, status) {
   const btnGroupName = '<>VulnerabilityOpts'.replace('<>', btnName);
-  console.log(status);
 
   return <ButtonToolbar className="CenterToolbar paddedButton" >
     <ToggleButtonGroup type="radio" size="sm" ref={btnGroupName} name={btnGroupName} defaultValue={0}>
@@ -55,7 +54,6 @@ export function buildVulnerabilityButtons(btnName, toggleCallback, status) {
         onClick={toggleCallback}
         value={0}
         ref={'<>NA'.replace('<>', btnName)}
-        //variant={itemButtonVariant}
       >
         N/A
       </ToggleButton>
@@ -64,7 +62,6 @@ export function buildVulnerabilityButtons(btnName, toggleCallback, status) {
         onClick={toggleCallback}
         value={1}
         ref={'<>Weak'.replace('<>', btnName)}
-        //variant={itemButtonVariant}
       >
         {btnName} Weak
       </ToggleButton>
@@ -73,7 +70,6 @@ export function buildVulnerabilityButtons(btnName, toggleCallback, status) {
         onClick={toggleCallback}
         value={2}
         ref={'<>Neu'.replace('<>', btnName)}
-        //variant={monsterButtonVariant}
       >
         {btnName} Neu.
       </ToggleButton>
@@ -82,7 +78,6 @@ export function buildVulnerabilityButtons(btnName, toggleCallback, status) {
         onClick={toggleCallback}
         value={3}
         ref={'<>Res'.replace('<>', btnName)}
-        //variant={monsterButtonVariant}
       >
         {btnName} Res.
       </ToggleButton>

@@ -99,7 +99,6 @@ class Compendium extends Component {
 
     // Filter items based on min cost
     if (filters.itemFlag && filters.minCost) {
-        console.log('MIN COST', filters.minCost)
         dataset = dataset.filter(function (datum) {
             return parseInt(datum.price) >= parseInt(filters.minCost);
         });
@@ -119,8 +118,26 @@ class Compendium extends Component {
         });
     }
 
-    // TODO: Do rest of stuff here
+    // Filter Monsters based on drops
+    console.log('FILTERING MONSTER ITEM DROP')
+    if (!filters.itemFlag && filters.monsterItemDrop !== undefined) {
+        dataset = dataset.filter(function(datum) {
+            if (datum.drops === undefined) {
+                return false
+            } else {
+                let result = false;
+                Object.keys(datum.drops).forEach(function (dropKey) {
+                    const dropName = datum.drops[dropKey].name.toLowerCase();
+                    if (dropName === filters.monsterItemDrop) {
+                        result = true;
+                    }
+                });
+                return result;
+            }
+        });
+    }
 
+    // TODO: Do rest of stuff here
 
     // Reset active
     if (this.active && !dataset.includes(this.active)) {

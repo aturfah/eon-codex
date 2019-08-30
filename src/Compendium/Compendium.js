@@ -136,6 +136,23 @@ class Compendium extends Component {
         });
     }
 
+    // Filter Monsters based on weakness
+    if (!filters.itemFlag && ![undefined, {}].includes(filters.dmgVulnerability)) {
+        dataset = dataset.filter(function(datum) {
+            let result = true;
+            Object.keys(filters.dmgVulnerability).forEach(function (vulKey) {
+                if (filters.dmgVulnerability[vulKey] === 'Weak') {
+                    result = result && (datum.damageVul[vulKey] > 100)
+                } else if (filters.dmgVulnerability[vulKey] === 'Neu') {
+                    result = result && (datum.damageVul[vulKey] === 100)
+                } else if (filters.dmgVulnerability[vulKey] === 'Res') {
+                    result = result && (datum.damageVul[vulKey] < 100)
+                }
+            })
+            return result;
+        });
+    }
+
     // TODO: Do rest of stuff here
 
     // Reset active

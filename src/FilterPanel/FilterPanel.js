@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Image from 'react-bootstrap/Image';
 import './FilterPanel.css';
-import {isNumber} from '../helpers';
+import { isNumber } from '../helpers';
 
 import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col';
@@ -74,22 +74,22 @@ class FilterPanel extends Component {
     this.props.locations.forEach(function (item, index) {
       buttonLists.push(
         <Dropdown.Item
-            eventKey={item}
-            disabled={item===activeLocation}
-            >
-            {item}
+          eventKey={item}
+          disabled={item === activeLocation}
+        >
+          {item}
         </Dropdown.Item>
       );
     });
 
     return <DropdownButton
-        size="sm"
-        id="location-dropdown-select"
-        ref="locationDropdownSelect"
-        title={'Location: ' + this.activeLocation}
-        onSelect={this.locationDropdownSelect}
-        className="leftPadded paddedButton"
-        >
+      size="sm"
+      id="location-dropdown-select"
+      ref="locationDropdownSelect"
+      title={'Location: ' + this.activeLocation}
+      onSelect={this.locationDropdownSelect}
+      className="leftPadded paddedButton"
+    >
       {buttonLists}
     </DropdownButton>
   }
@@ -99,9 +99,9 @@ class FilterPanel extends Component {
     dropdown.title = event;
     this.activeLocation = event;
     if (event !== '(All)') {
-        this.props.updateFilters('location', event.toLowerCase());
+      this.props.updateFilters('location', event.toLowerCase());
     } else {
-        this.props.updateFilters('location', null);
+      this.props.updateFilters('location', null);
     }
 
   }
@@ -110,23 +110,23 @@ class FilterPanel extends Component {
     const buttonList = [];
     let condItemFlag = this.condItemFlag;
     ['(All)', 'Yes', 'No'].forEach(function (val) {
-        buttonList.push(
-          <Dropdown.Item
-            eventKey={val}
-            disabled={val===condItemFlag} 
-            >
-           {val}
+      buttonList.push(
+        <Dropdown.Item
+          eventKey={val}
+          disabled={val === condItemFlag}
+        >
+          {val}
         </Dropdown.Item>
-        )
+      )
     });
 
     return <DropdownButton
-        size="sm"
-        id="rare-item-dropdown-select"
-        ref="condItemDropdownSelect"
-        title={'Conditional: ' + this.condItemFlag}
-        onSelect={this.condItemDropdownSelect}
-        >
+      size="sm"
+      id="rare-item-dropdown-select"
+      ref="condItemDropdownSelect"
+      title={'Conditional: ' + this.condItemFlag}
+      onSelect={this.condItemDropdownSelect}
+    >
       {buttonList}
     </DropdownButton>
   }
@@ -136,9 +136,9 @@ class FilterPanel extends Component {
     dropdown.title = event;
     this.condItemFlag = event;
     if (event !== '(All)') {
-        this.props.updateFilters('condItem', event);
+      this.props.updateFilters('condItem', event);
     } else {
-        this.props.updateFilters('condItem', null);
+      this.props.updateFilters('condItem', null);
     }
   }
 
@@ -146,24 +146,24 @@ class FilterPanel extends Component {
     const buttonList = [];
     let monsterTypeFlag = this.monsterTypeFlag;
     this.props.monsterTypes.forEach(function (val) {
-        buttonList.push(
-          <Dropdown.Item
-            eventKey={val}
-            disabled={val===monsterTypeFlag} 
-            >
-           {val}
+      buttonList.push(
+        <Dropdown.Item
+          eventKey={val}
+          disabled={val === monsterTypeFlag}
+        >
+          {val}
         </Dropdown.Item>
-        )
+      )
     });
 
     return <DropdownButton
-        size="sm"
-        id="monster-type-dropdown-select"
-        ref="monsterTypeDropdownSelect"
-        title={'Monster Type: ' + this.monsterTypeFlag}
-        onSelect={this.monsterTypeDropdownSelect}
-        className='paddedButton'
-        >
+      size="sm"
+      id="monster-type-dropdown-select"
+      ref="monsterTypeDropdownSelect"
+      title={'Monster Type: ' + this.monsterTypeFlag}
+      onSelect={this.monsterTypeDropdownSelect}
+      className='paddedButton'
+    >
       {buttonList}
     </DropdownButton>
   }
@@ -173,21 +173,21 @@ class FilterPanel extends Component {
     dropdown.title = event;
     this.monsterTypeFlag = event;
     if (event !== '(All)') {
-        this.props.updateFilters('monsterType', event);
+      this.props.updateFilters('monsterType', event);
     } else {
-        this.props.updateFilters('monsterType', null);
+      this.props.updateFilters('monsterType', null);
     }
   }
 
   buildNameFilter() {
     return (<InputGroup className="mb-3">
-        <FormControl
+      <FormControl
         ref="nameFilterText"
         placeholder="Item/Monster Name"
         value={this.nameFilter}
         aria-label="Item/Monster Name"
         onChange={this.nameFilterType}
-        />
+      />
     </InputGroup>)
   }
 
@@ -195,21 +195,21 @@ class FilterPanel extends Component {
     const textbox = this.refs.nameFilterText;
     this.nameFilter = textbox.value;
     if (textbox.value) {
-        this.props.updateFilters('name', textbox.value.toLowerCase());
+      this.props.updateFilters('name', textbox.value.toLowerCase());
     } else {
-        this.props.updateFilters('name', null);
+      this.props.updateFilters('name', null);
     }
   }
 
   buildMonsterSourceFilter() {
     return (<InputGroup className="mb-3 paddedButton">
-    <FormControl
-    ref="monsterSourceFilterText"
-    placeholder="Monster Source Name"
-    value={this.monsterNameFilter}
-    aria-label="Monster Source Name"
-    onChange={this.monsterSourceFilterType}
-    />
+      <FormControl
+        ref="monsterSourceFilterText"
+        placeholder="Monster Source Name"
+        value={this.monsterNameFilter}
+        aria-label="Monster Source Name"
+        onChange={this.monsterSourceFilterType}
+      />
     </InputGroup>)
   }
 
@@ -217,9 +217,9 @@ class FilterPanel extends Component {
     const textbox = this.refs.monsterSourceFilterText;
     this.monsterNameFilter = textbox.value;
     if (this.monsterNameFilter) {
-        this.props.updateFilters('monsterSourceName', this.monsterNameFilter.toLowerCase());
+      this.props.updateFilters('monsterSourceName', this.monsterNameFilter.toLowerCase());
     } else {
-        this.props.updateFilters('monsterSourceName', null);
+      this.props.updateFilters('monsterSourceName', null);
     }
   }
 
@@ -227,24 +227,24 @@ class FilterPanel extends Component {
     const buttonList = [];
     let gatherPointFlag = this.gatherPointFlag;
     ['(N/A)', '(All)', '(None)', 'Chop', 'Mine', 'Take'].forEach(function (val) {
-        buttonList.push(
-          <Dropdown.Item
-            eventKey={val}
-            disabled={val===gatherPointFlag} 
-            >
-           {val}
+      buttonList.push(
+        <Dropdown.Item
+          eventKey={val}
+          disabled={val === gatherPointFlag}
+        >
+          {val}
         </Dropdown.Item>
-        )
+      )
     });
 
     return <DropdownButton
-        size="sm"
-        id="gather-point-dropdown-select"
-        ref="gatherPointDropdownSelect"
-        title={'Gather Point: ' + this.gatherPointFlag}
-        onSelect={this.gatherPointDropdownSelect}
-        className="leftPadded"
-        >
+      size="sm"
+      id="gather-point-dropdown-select"
+      ref="gatherPointDropdownSelect"
+      title={'Gather Point: ' + this.gatherPointFlag}
+      onSelect={this.gatherPointDropdownSelect}
+      className="leftPadded"
+    >
       {buttonList}
     </DropdownButton>
   }
@@ -258,22 +258,22 @@ class FilterPanel extends Component {
     let mineFlag = false;
     let takeFlag = false;
     if (event !== '(N/A)') {
-        if (event === '(All)') {
-            chopFlag = true;
-            mineFlag = true;
-            takeFlag = true;
-        }
-        else if (event === 'Chop') {
-            chopFlag = true;
-        } else if (event === 'Mine') {
-            mineFlag = true;
-        } else if (event === 'Take') {
-            takeFlag = true;
-        }
+      if (event === '(All)') {
+        chopFlag = true;
+        mineFlag = true;
+        takeFlag = true;
+      }
+      else if (event === 'Chop') {
+        chopFlag = true;
+      } else if (event === 'Mine') {
+        mineFlag = true;
+      } else if (event === 'Take') {
+        takeFlag = true;
+      }
     } else {
-        chopFlag = null;
-        mineFlag = null;
-        takeFlag = null;
+      chopFlag = null;
+      mineFlag = null;
+      takeFlag = null;
     }
 
     this.props.updateFilters('chopFlag', chopFlag);
@@ -283,69 +283,69 @@ class FilterPanel extends Component {
 
   buildCostFilter() {
     return (
-    <Row>
+      <Row>
         <Col xs='12' sm='6'>
-    <FormControl
-    ref="minCostFilter"
-    placeholder="Minimum Cost"
-    value={this.minCostFilter}
-    aria-label="Minimum Cost"
-    onChange={this.minCostFilterType}
-    />
+          <FormControl
+            ref="minCostFilter"
+            placeholder="Minimum Cost"
+            value={this.minCostFilter}
+            aria-label="Minimum Cost"
+            onChange={this.minCostFilterType}
+          />
         </Col>
         <Col xs='12' sm='6'>
-<FormControl
-    ref="maxCostFilter"
-    placeholder="Maximum Cost"
-    value={this.maxCostFilter}
-    aria-label="Maximum Cost"
-    onChange={this.maxCostFilterType}
-    />
+          <FormControl
+            ref="maxCostFilter"
+            placeholder="Maximum Cost"
+            value={this.maxCostFilter}
+            aria-label="Maximum Cost"
+            onChange={this.maxCostFilterType}
+          />
         </Col>
-    </Row>
+      </Row>
     )
   }
 
   minCostFilterType() {
     const textbox = this.refs.minCostFilter;
-    if(isNumber(textbox.value)) {
-        this.minCostFilter = textbox.value;
-        if (this.minCostFilter) {
-            this.props.updateFilters('minCost', this.minCostFilter);
-        } else {
-            this.props.updateFilters('minCost', null);
-        }
+    if (isNumber(textbox.value)) {
+      this.minCostFilter = textbox.value;
+      if (this.minCostFilter) {
+        this.props.updateFilters('minCost', this.minCostFilter);
+      } else {
+        this.props.updateFilters('minCost', null);
+      }
     }
   }
 
   maxCostFilterType() {
     const textbox = this.refs.maxCostFilter;
-    if(isNumber(textbox.value)) {
-        this.maxCostFilter = textbox.value;
-        if (this.maxCostFilter) {
-            this.props.updateFilters('maxCost', this.maxCostFilter);
-        } else {
-            this.props.updateFilters('maxCost', null);
-        }
+    if (isNumber(textbox.value)) {
+      this.maxCostFilter = textbox.value;
+      if (this.maxCostFilter) {
+        this.props.updateFilters('maxCost', this.maxCostFilter);
+      } else {
+        this.props.updateFilters('maxCost', null);
+      }
     }
   }
 
   buildMonsterDropFilter() {
     return <FormControl
-        ref="monsterDropFilter"
-        placeholder="Monster Item Drop"
-        value={this.monsterDrop}
-        aria-label="Monster Item Drop"
-        onChange={this.monsterDropFilterType}
-        />
+      ref="monsterDropFilter"
+      placeholder="Monster Item Drop"
+      value={this.monsterDrop}
+      aria-label="Monster Item Drop"
+      onChange={this.monsterDropFilterType}
+    />
   }
 
   monsterDropFilterType() {
-      const textbox = this.refs.monsterDropFilter;
-      if (textbox.value.trim() !== '' || textbox.value === '') {
-          this.monsterDrop = textbox.value.toLowerCase()
-          this.props.updateFilters('monsterItemDrop', this.monsterDrop.trim())
-      }
+    const textbox = this.refs.monsterDropFilter;
+    if (textbox.value.trim() !== '' || textbox.value === '') {
+      this.monsterDrop = textbox.value.toLowerCase()
+      this.props.updateFilters('monsterItemDrop', this.monsterDrop.trim())
+    }
   }
 
   /**
@@ -360,7 +360,7 @@ class FilterPanel extends Component {
     let itemButtonVariant = 'success';
     let monsterButtonVariant = 'secondary';
     let itemFiltersVisible = true;
-    if (this.itemFlag===false) {
+    if (this.itemFlag === false) {
       itemButtonVariant = 'secondary';
       monsterButtonVariant = 'success';
       itemFiltersVisible = false;
@@ -396,16 +396,16 @@ class FilterPanel extends Component {
                   onClick={this.toggleItemFlagOn.bind(this)}
                   value={1}
                   variant={itemButtonVariant}
-                  >
-                    Items
+                >
+                  Items
                 </ToggleButton>
                 <ToggleButton
                   size="sm"
                   onClick={this.toggleItemFlagOff.bind(this)}
                   value={2}
                   variant={monsterButtonVariant}
-                  >
-                    Monsters
+                >
+                  Monsters
                 </ToggleButton>
               </ToggleButtonGroup>
             </ButtonToolbar>
@@ -413,16 +413,16 @@ class FilterPanel extends Component {
             {nameFilter}
           </Col>
           <Col xs="12" md="7" hidden={!itemFiltersVisible}>
-              I am Items FilterPanel. Hate me.
+            I am Items FilterPanel. Hate me.
             <ButtonToolbar className="CenterToolbar paddedButton">
-                {condItemDropdown}
-                {gatherPointDropdown}
+              {condItemDropdown}
+              {gatherPointDropdown}
             </ButtonToolbar>
             {costFilter}
             {monsterSourceTextField}
           </Col>
           <Col xs="12" md="7" hidden={itemFiltersVisible}>
-              I am Monsters FilterPanel. Love me.
+            I am Monsters FilterPanel. Love me.
             {monsterTypeDropdown}
             {monsterItemDropField}
           </Col>

@@ -343,8 +343,8 @@ class FilterPanel extends Component {
   monsterDropFilterType() {
       const textbox = this.refs.monsterDropFilter;
       if (textbox.value.trim() !== '' || textbox.value === '') {
-          this.monsterDrop = textbox.value.trim()
-          this.props.updateFilters('monsterDrop', this.monsterDrop)
+          this.monsterDrop = textbox.value.toLowerCase()
+          this.props.updateFilters('monsterItemDrop', this.monsterDrop.trim())
       }
   }
 

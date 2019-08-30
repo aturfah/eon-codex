@@ -119,7 +119,6 @@ class Compendium extends Component {
     }
 
     // Filter Monsters based on drops
-    console.log('FILTERING MONSTER ITEM DROP')
     if (!filters.itemFlag && filters.monsterItemDrop !== undefined) {
         dataset = dataset.filter(function(datum) {
             if (datum.drops === undefined) {

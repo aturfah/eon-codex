@@ -6,7 +6,7 @@ function capitalizeFirst(string) {
 
 export function capitalizeWords(inputStr) {
     const outputArr = [];
-    inputStr.split(' ').forEach(function(word) {
+    inputStr.split(' ').forEach(function (word) {
         outputArr.push(capitalizeFirst(word));
     });
 
@@ -26,17 +26,17 @@ export function isNumber(input) {
 export function importAll(r) {
     const images = {};
     r.keys().forEach((item, index) => {
-      images[item.replace('./', '')] = r(item);
+        images[item.replace('./', '')] = r(item);
     });
     return images;
-  }
+}
 
-  export function formatVulnerability(number) {
-      if (number < 100) {
-          return <span className="RedNumber">{number}%</span>
-      } else if (number > 100) {
-          return <span className="GreenNumber">{number}%</span>
-      } else {
-          return <span>{number}%</span>
-      }
-  }
+export function formatVulnerability(number) {
+    if (number < 100) {
+        return <span className="RedNumber">{number}%</span>
+    } else if (number > 100) {
+        return <span className="GreenNumber">{number}%</span>
+    } else {
+        return <span>{number}%</span>
+    }
+}

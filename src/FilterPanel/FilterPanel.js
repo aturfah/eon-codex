@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Image from 'react-bootstrap/Image';
 import './FilterPanel.css';
-import { isNumber } from '../helpers';
+import { isNumber, buildVulnerabilityButtons } from '../helpers';
 
 import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col';
@@ -37,6 +37,8 @@ class FilterPanel extends Component {
     this.minCostFilterType = this.minCostFilterType.bind(this);
     this.maxCostFilterType = this.maxCostFilterType.bind(this);
     this.monsterDropFilterType = this.monsterDropFilterType.bind(this);
+    this.buildMonsterDmgVulnerabilityButtons = this.buildMonsterDmgVulnerabilityButtons.bind(this);
+    this.monsterDmgVulnerabilityToggle = this.monsterDmgVulnerabilityToggle.bind(this);
     this.toggleItemFlagOn();
   }
 
@@ -350,21 +352,26 @@ class FilterPanel extends Component {
 
   buildMonsterDmgVulnerabilityButtons() {
     const columns = [];
+    const clickToggle = this.monsterDmgVulnerabilityToggle;
     ['Cut', 'Stab', 'Bash', 'Fire', 'Ice', 'Volt', 'Almighty'].forEach(function (name) {
-      let width = 3;
-      if (['Cut', 'Stab', 'Bash'].includes(name)) {
-        width = 4
+      let width = 6;
+      if (name == 'Almighty') {
+        width = 12;
       }
       columns.push(<Col xs={width}
         ref="doot"
       >
-        {name}
+        {buildVulnerabilityButtons(name, clickToggle)}
       </Col>)
     });
 
     return (<Row>
       {columns}
     </Row>)
+  }
+
+  monsterDmgVulnerabilityToggle() {
+    console.log("SOMETHING GOT TOGGLED!!!!")
   }
 
   /**

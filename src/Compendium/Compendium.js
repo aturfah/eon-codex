@@ -201,7 +201,7 @@ class Compendium extends Component {
     return (
       <Container fluid={true} className="Compendium">
         <Row>
-        <Col xs="3">
+        <Col xs="3" className="selectList">
             I am Compendium Menu. Click me.
             {doot}
         </Col>

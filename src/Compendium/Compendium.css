@@ -24,3 +24,8 @@ table, th, td {
 .GreenNumber {
     color: green;
 }
+
+.selectList {
+    overflow: scroll;
+    height: 90vh;
+}
